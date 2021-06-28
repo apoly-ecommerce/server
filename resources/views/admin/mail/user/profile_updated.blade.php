@@ -1,0 +1,1 @@
+<p>Send mail to notify update profile successfully !</p>

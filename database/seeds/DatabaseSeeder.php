@@ -23,6 +23,15 @@ class DatabaseSeeder extends Seeder
         $this->call('ModulesSeeder');
         $this->call('PermissionsSeeder');
         $this->call('AddressTypesSeeder');
+        $this->call('CategoryGroupsSeeder');
+        $this->call('CategorySubGroupsSeeder');
+        $this->call('CategoriesSeeder');
+        $this->call('ManufacturersSeeder');
+        $this->call('ProductsSeeder');
+        $this->call('SystemsSeeder');
+        $this->call('BannerGroupsSeeder');
+        $this->call('DemoSeeder');
+        $this->call('FaqsSeeder');
 
         $this->command->info('====Lux.===// SEEDING COMPLETE ! //=======');
 

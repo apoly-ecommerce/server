@@ -23,16 +23,23 @@ class UpdateProductRequest extends Request
      */
     public function rules()
     {
-        $id = $this->route('product');
+        $id = Request::segment(count(Request::segments())); // Current model ID.
 
         return [
             'category_list' => 'required',
-            'name' => 'required|composite_unique:products,name, '.$id,
+            'name' => 'required|composite_unique:products, '.$id,
             'description' => 'required',
             'active' => 'required',
-            'min_price' => 'nullable|numeric|min:0',
-            'max_price' => 'nullable|numeric|min:' . $this->min_price ?? 0,
+            'promotional_price' => 'nullable|numeric|min:0',
+            'original_price' => 'nullable|numeric|min:' . $this->min_price ?? 0,
             'image' => 'mimes:jpg,jpeg,png,gif',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.composite_unique' => trans('validation.field_exists', ['attribute' => 'name'])
         ];
     }
 }

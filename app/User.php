@@ -2,8 +2,10 @@
 
 namespace App;
 
-
+use Hash;
+use Auth;
 use App\Models\Role;
+use App\Models\Shop;
 use App\Common\Imageable;
 use App\Common\Addressable;
 use Laravel\Passport\HasApiTokens;
@@ -14,6 +16,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, Imageable, Addressable, HasApiTokens;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -64,6 +73,36 @@ class User extends Authenticatable
     ];
 
     /**
+     * Route notifications for the mail channel.
+     *
+     * @return string
+     */
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password for the user.
+     *
+     * @return array
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::needsRehash($password) ? bcrypt($password) : $password;
+    }
+
+    /**
+     * Get name the user.
+     *
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->nice_name ?: $this->name;
+    }
+
+    /**
      * Get the country for the Address.
      */
     public function country()
@@ -77,6 +116,14 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Get the shop associated with the user.
+     */
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class)->withDefault();
     }
 
     /**
@@ -96,7 +143,7 @@ class User extends Authenticatable
      */
     public function isSuperAdmin() : bool
     {
-        return $this->role_id == \App\Models\Role::SUPER_ADMIN;
+        return $this->role_id == Role::SUPER_ADMIN;
     }
 
     /**
@@ -106,7 +153,7 @@ class User extends Authenticatable
      */
     public function isAdmin() : bool
     {
-        return $this->isSuperAdmin() || $this->role_id == \App\Models\Role::ADMIN;
+        return $this->isSuperAdmin() || $this->role_id == Role::ADMIN;
     }
 
     /**
@@ -116,7 +163,7 @@ class User extends Authenticatable
      */
     public function isMerchant()
     {
-        return $this->role_id == \App\Models\Role::MERCHANT;
+        return $this->role_id == Role::MERCHANT;
         // return 'hello';
         // return $this->role_id;
         // return \App\Models\Role::MERCHANT;
@@ -216,6 +263,39 @@ class User extends Authenticatable
     public function isOnGenericTrial() : bool
     {
         return $this->shop->onGenericTrial();
+    }
+
+    /**
+     * Scope a query to only include records from the users shop.
+     *
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeMine($query)
+    {
+        return $query->where('shop_id', Auth::user()->merchantId());
+    }
+
+    /**
+     * Scope q query to only include records with lower privilege than the logged in user.
+     *
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLevel($query)
+    {
+        return $query->whereHas('role', function($q) {
+            if (Auth::user()->role->level) {
+                return $q->where('level', '>', Auth::user()->role->level)->orWhere('level', Null);
+            }
+            return $q->whereNull('level');
+        });
+    }
+
+    /**
+     * Get the shops the user own.
+     */
+    public function owns()
+    {
+        return $this->hasOne(Shop::class, 'owner_id')->withTrashed()->withDefault();
     }
 
 }

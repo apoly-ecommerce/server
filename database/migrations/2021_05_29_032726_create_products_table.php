@@ -21,18 +21,29 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('model_number')->nullable();
             $table->string('mpn')->nullable();
+            $table->longText('detail_information')->nullable();
             $table->longtext('description')->nullable();
-            $table->decimal('min_price', 20, 6)->default(0)->nullable();
-            $table->decimal('max_price', 20, 6)->nullable();
-            $table->integer('origin_country')->unsigned()->nullable();
+            $table->double('promotional_price', 20, 6);
+            $table->double('original_price', 20, 6);
+            $table->boolean('requires_shipping')->default(1)->nullable();
             $table->string('slug')->unique();
             $table->text('meta_title')->nullable();
             $table->longtext('meta_description')->nullable();
             $table->bigInteger('sale_count')->nullable();
             $table->boolean('active')->default(1);
+
+            $table->string('warranty_period')->nullable();
+            $table->string('warranty_form')->nullable();
+            $table->string('warranty_place')->nullable();
+
+            $table->string('percent_refund')->nullable();
+            $table->string('return_time')->nullable();
+            $table->boolean('allow_inspection')->default(false)->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });
+
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Common;
 
 use Auth;
-use App\Helper\Authorize;
+use App\Helpers\Authorize;
 use App\Http\Resources\ApiStatusResource;
 use Illuminate\Support\Str;
 
@@ -27,6 +27,12 @@ trait Authorizable
         'allPaginate' => 'view',
         'allTrashedPaginate' => 'view',
         'hierarchy' => 'view',
+        'mine' => 'view',
+        'byCountry' => 'view',
+        'infoUserLogged' => 'view',
+        'userAuth' => 'view',
+        'paginate' => 'view',
+        'trashedPaginate' => 'view',
 
         'generate'    => 'add',
         'create'      => 'add',
@@ -101,7 +107,7 @@ trait Authorizable
     {
         if (! $this->checkPermission('', $parameters)) {
             return (new ApiStatusResource([
-                'errors' => [ 'unAuthorize' => trans('message.permission.denied') ],
+                'errors' => [ 'unAuthorize' => trans('messages.permission.denied') ],
                 'status' => 403
             ]))->setStatusCode(403);
         }

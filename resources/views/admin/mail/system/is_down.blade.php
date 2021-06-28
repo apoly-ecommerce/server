@@ -1,0 +1,1 @@
+<p>Send mail notify system is down successfully !</p>

@@ -91,7 +91,7 @@ class ManufacturerController extends Controller
         $manufacturer = $this->manufacturer->store($request);
 
         $successRes = [
-            'success' => trans('message.created', ['model' => $this->model]),
+            'success' => trans('messages.created', ['model' => $this->model]),
             'manufacturer' => new ManufacturerResource($manufacturer),
             'status' => 200
         ];
@@ -129,7 +129,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->update($request, $id);
 
         $successRes = [
-            'success' => trans('message.updated', ['model' => $this->model]),
+            'success' => trans('messages.updated', ['model' => $this->model]),
             'status' => 200
         ];
 
@@ -147,7 +147,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->trash($id);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -165,7 +165,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -183,7 +183,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->destroy($id);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -201,7 +201,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -219,7 +219,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->restore($id);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -237,7 +237,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -254,7 +254,7 @@ class ManufacturerController extends Controller
         $this->manufacturer->emptyTrash();
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 

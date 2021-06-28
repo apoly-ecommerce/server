@@ -24,6 +24,7 @@ class CountryResource extends JsonResource
             'calling_code' => $this->calling_code,
             'active' => $this->active,
             'states_count' => $this->states_count,
+            'states' => $this->states
         ];
     }
 }

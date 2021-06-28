@@ -1,0 +1,1 @@
+<p>Send mail to notification shop deleted successfully !.</p>

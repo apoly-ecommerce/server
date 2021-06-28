@@ -91,7 +91,7 @@ class CategoryGroupController extends Controller
         $catGrp = $this->categoryGroup->store($request);
 
         $successRes = [
-            'success' => trans('message.created', ['model' => $this->model]),
+            'success' => trans('messages.created', ['model' => $this->model]),
             'catGrp'  => new CategoryGroupResource($catGrp),
             'status'  => 200,
         ];
@@ -129,7 +129,7 @@ class CategoryGroupController extends Controller
         $catGrp = $this->categoryGroup->update($request, $id);
 
         $successRes = [
-            'success' => trans('message.updated', ['model' => $this->model]),
+            'success' => trans('messages.updated', ['model' => $this->model]),
             'categoryGroup' => new CategoryGroupResource($catGrp),
             'status' => 200
         ];
@@ -148,7 +148,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->trash($id);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -166,7 +166,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -184,7 +184,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->destroy($id);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -202,7 +202,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -220,7 +220,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->restore($id);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -238,7 +238,7 @@ class CategoryGroupController extends Controller
         $this->categoryGroup->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 

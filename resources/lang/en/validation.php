@@ -42,6 +42,7 @@ return [
     'email' => 'The :attribute must be a valid email address.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'exists' => 'The selected :attribute is invalid.',
+    'field_exists' => 'The :attribute already exists',
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
@@ -155,6 +156,14 @@ return [
     */
     'role_name_required' => 'The name of role is required.',
     'role_name_unique'   => 'The name of role already exists.',
-    'role_type_required' => 'Please select role type.'
+    'role_type_required' => 'Please select role type.',
+
+    'register_email_unique' => 'This email address already has an account. Please try something else.',
+    'register_phone_unique' => 'This phone already has an account. Please try something else.',
+
+    'composite_unique' => 'The :attribute :value already exists.',
+    'brand_logo_mimes' => 'The brand logo must be a file of type: :values.',
+    'brand_logo_max' => 'The brand logo may not be greater than :max kilobytes.',
+    'slider_image_required' => 'The slider image is required',
 
 ];

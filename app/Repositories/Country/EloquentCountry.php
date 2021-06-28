@@ -17,6 +17,6 @@ class EloquentCountry extends EloquentRepository implements BaseRepository, Coun
 
     public function all()
     {
-        return $this->model->with('currency:id,name', 'timezone:id,value')->withCount('states')->get();
+        return $this->model->with('currency:id,name', 'timezone:id,value', 'states')->withCount('states')->get();
     }
 }

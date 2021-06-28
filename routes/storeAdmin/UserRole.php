@@ -4,7 +4,8 @@ Route::get('role/getRolePermissionsByUser', 'Api\RoleController@getRolePermissio
 Route::post('role/add', 'Api\RoleController@store')->name('role.store');
 Route::put('role/update/{id}', 'Api\RoleController@update')->name('role.update');
 Route::get('role/list', 'Api\RoleController@index')->name('role.index');
-Route::get('role/list/trashed', 'Api\RoleController@allTrashed')->name('role.allTrashed');
+Route::get('role/list/paginate', 'Api\RoleController@allPaginate')->name('role.allPaginate');
+Route::get('role/list/trashed/paginate', 'Api\RoleController@allTrashedPaginate')->name('role.allTrashedPaginate');
 Route::delete('role/trash/{id}', 'Api\RoleController@trash')->name('role.trash');
 Route::delete('role/massTrash', 'Api\RoleController@massTrash')->name('role.massTrash');
 Route::patch('role/restore/{id}', 'Api\RoleController@restore')->name('role.restore');

@@ -36,10 +36,28 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = $this->role->allWithPaginate($request->limit);
+        $roles = $this->role->all();
 
         $successRes = [
-            'roles'  => $roles,
+          'roles' => RoleResource::collection($roles),
+          'status' => 200
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allPaginate(Request $request)
+    {
+        $roles = $this->role->allWithPaginate($request->limie);
+
+        $successRes = [
+            'roles' => RoleResource::collection($roles),
+            'total' => $this->role->all()->count(),
             'status' => 200
         ];
 
@@ -52,13 +70,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashed(Request $request)
+    public function allTrashedPaginate(Request $request)
     {
         $roles = $this->role->trashOnlyWithPaginate($request->limit);
 
         $successRes = [
-            'trashed' => $roles,
-            'status'  => 200
+            'roles' => RoleResource::collection($roles),
+            'total' => $this->role->all()->count(),
+            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -75,7 +94,7 @@ class RoleController extends Controller
         $this->role->store($request);
 
         $successRes = [
-            'success' => trans('message.created', ['model' => $this->model_name]),
+            'success' => trans('messages.created', ['model' => $this->model_name]),
             'status' => 200
         ];
 
@@ -115,7 +134,7 @@ class RoleController extends Controller
         $this->role->update($request, $id);
 
         $successRes = [
-            'success' => trans('message.updated', ['model' => $this->model_name]),
+            'success' => trans('messages.updated', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -133,7 +152,7 @@ class RoleController extends Controller
         $this->role->trash($id);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model_name]),
+            'success' => trans('messages.trashed', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -151,7 +170,7 @@ class RoleController extends Controller
         $this->role->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model_name]),
+            'success' => trans('messages.trashed', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -170,7 +189,7 @@ class RoleController extends Controller
         $this->role->destroy($id);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model_name]),
+            'success' => trans('messages.deleted', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -188,7 +207,7 @@ class RoleController extends Controller
         $this->role->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model_name]),
+            'success' => trans('messages.deleted', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -206,7 +225,7 @@ class RoleController extends Controller
         $this->role->restore($id);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model_name]),
+            'success' => trans('messages.restored', ['model' => $this->model_name]),
             'status'  => 200
         ];
 
@@ -225,7 +244,7 @@ class RoleController extends Controller
         $this->role->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model_name]),
+            'success' => trans('messages.restored', ['model' => $this->model_name]),
             'status'  => 200
         ];
 

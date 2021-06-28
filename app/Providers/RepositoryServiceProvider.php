@@ -8,6 +8,8 @@ class RepositoryServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        // SETTINGS
+
         $this->app->singleton(
             \App\Repositories\Role\RoleRepository::class,
             \App\Repositories\Role\EloquentRole::class
@@ -17,6 +19,8 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Module\ModuleRepository::class,
             \App\Repositories\Module\EloquentModule::class,
         );
+
+        //  CATALOG
 
         $this->app->singleton(
             \App\Repositories\CategoryGroup\CategoryGroupRepository::class,
@@ -39,13 +43,71 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
+            \App\Repositories\Product\ProductRepository::class,
+            \App\Repositories\Product\EloquentProduct::class
+        );
+
+        // ADMIN
+
+        $this->app->singleton(
+            \App\Repositories\User\UserRepository::class,
+            \App\Repositories\User\EloquentUser::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Customer\CustomerRepository::class,
+            \App\Repositories\Customer\EloquentCustomer::class
+        );
+
+        // COMMON
+
+        $this->app->singleton(
+            \App\Repositories\Address\AddressRepository::class,
+            \App\Repositories\Address\EloquentAddress::class
+        );
+
+        $this->app->singleton(
             \App\Repositories\Country\CountryRepository::class,
             \App\Repositories\Country\EloquentCountry::class
         );
 
+        // VENDORS
+
         $this->app->singleton(
-            \App\Repositories\Product\ProductRepository::class,
-            \App\Repositories\Product\EloquentProduct::class
+            \App\Repositories\Shop\ShopRepository::class,
+            \App\Repositories\Shop\EloquentShop::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Merchant\MerchantRepository::class,
+            \App\Repositories\Merchant\EloquentMerchant::class
+        );
+
+        // APPEARANCES
+
+        $this->app->singleton(
+            \App\Repositories\Banner\BannerRepository::class,
+            \App\Repositories\Banner\EloquentBanner::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\BannerGroup\BannerGroupRepository::class,
+            \App\Repositories\BannerGroup\EloquentBannerGroup::class
+        );
+
+
+
+        // UTILITIES
+
+        $this->app->singleton(
+            \App\Repositories\FaqTopic\FaqTopicRepository::class,
+            \App\Repositories\FaqTopic\EloquentFaqTopic::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Faq\FaqRepository::class,
+            \App\Repositories\Faq\EloquentFaq::class
+        );
+
     }
 }

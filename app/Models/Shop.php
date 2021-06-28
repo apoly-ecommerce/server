@@ -4,12 +4,12 @@ namespace App\Models;
 
 use App\Common\Addressable;
 use App\Common\Imageable;
-use Illuminate\Database\Eloquent\Model;
+use App\Common\Feedbackable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shop extends Model
+class Shop extends BaseModel
 {
-    use SoftDeletes, Addressable, Imageable;
+    use SoftDeletes, Addressable, Imageable, Feedbackable;
 
     /**
      * The database table used by the model.
@@ -94,6 +94,54 @@ class Shop extends Model
     public function staffs()
     {
         return $this->hasMany(\App\User::class)->withTrashed();
+    }
+
+    /**
+     * Get the config for the shop.
+     */
+    public function config()
+    {
+        return $this->hasOne(Config::class);
+    }
+
+    /**
+     * Get the ShippingZones for the shop.
+     */
+    public function shippingZones()
+    {
+        return $this->hasMany(ShippingZone::class);
+    }
+
+    /**
+     * Get the address for the shop.
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'addressable');
+    }
+
+    /**
+     * Get the products for the shop.
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    /**
+     * Get the orders for the shop.
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * Get the carts for the shop.
+     */
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 
 }

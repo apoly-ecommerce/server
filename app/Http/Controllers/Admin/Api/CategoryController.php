@@ -31,7 +31,6 @@ class CategoryController extends Controller
 
         $successRes = [
             'categories' => CategoryResource::collection($categories),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -50,7 +49,6 @@ class CategoryController extends Controller
         $successRes = [
             'categories' => CategoryResource::collection($categories),
             'total'  => $this->category->all()->count(),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -69,7 +67,6 @@ class CategoryController extends Controller
         $successRes = [
             'categories' => CategoryResource::collection($categories),
             'total'  => $this->category->trashOnly()->count(),
-            'status' => 200,
         ];
 
         return new ApiStatusResource($successRes);
@@ -86,9 +83,8 @@ class CategoryController extends Controller
         $cat = $this->category->store($request);
 
         $successRes = [
-            'success' => trans('message.created', ['model' => $this->model]),
+            'success' => trans('messages.created', ['model' => $this->model]),
             'category' => new CategoryResource($cat),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -106,7 +102,6 @@ class CategoryController extends Controller
 
         $successRes = [
             'category' => new CategoryResource($cat),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -124,9 +119,8 @@ class CategoryController extends Controller
         $cat = $this->category->update($request, $id);
 
         $successRes = [
-            'success' => trans('message.updated', ['model' => $this->model]),
+            'success' => trans('messages.updated', ['model' => $this->model]),
             'category' => new CategoryResource($cat),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -143,8 +137,7 @@ class CategoryController extends Controller
         $this->category->trash($id);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
-            'status'  => 200
+            'success' => trans('messages.trashed', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -161,15 +154,14 @@ class CategoryController extends Controller
         $this->category->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
-            'status'  => 200
+            'success' => trans('messages.trashed', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
     }
 
 
-  /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -180,8 +172,7 @@ class CategoryController extends Controller
       $this->category->destroy($id);
 
       $successRes = [
-          'success' => trans('message.deleted', ['model' => $this->model]),
-          'status'  => 200
+          'success' => trans('messages.deleted', ['model' => $this->model]),
       ];
 
       return new ApiStatusResource($successRes);
@@ -198,8 +189,7 @@ class CategoryController extends Controller
         $this->category->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
-            'status'  => 200
+            'success' => trans('messages.deleted', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -216,8 +206,7 @@ class CategoryController extends Controller
         $this->category->restore($id);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
-            'status'  => 200
+            'success' => trans('messages.restored', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -234,8 +223,7 @@ class CategoryController extends Controller
         $this->category->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
-            'status'  => 200
+            'success' => trans('messages.restored', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);

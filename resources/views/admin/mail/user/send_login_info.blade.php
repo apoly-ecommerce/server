@@ -1,0 +1,1 @@
+<p>Send mail to notify create account new successfully !</p>

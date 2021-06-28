@@ -77,7 +77,7 @@ class ProductController extends Controller
         $this->product->store($request);
 
         $successRes = [
-            'success' => trans('message.created', ['model' => $this->model]),
+            'success' => trans('messages.created', ['model' => $this->model]),
             'status' => 200
         ];
 
@@ -92,7 +92,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->product->find($id);
+
+        $successRes = [
+            'product' => new ProductResource($product),
+            'status' => 200
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**
@@ -104,7 +111,14 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, $id)
     {
-        //
+        $this->product->update($request, $id);
+
+        $successRes = [
+          'success' => trans('messages.updated', ['model' => $this->model]),
+          'status' => 200
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**
@@ -118,7 +132,7 @@ class ProductController extends Controller
         $this->product->trash($id);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -136,7 +150,7 @@ class ProductController extends Controller
         $this->product->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('message.trashed', ['model' => $this->model]),
+            'success' => trans('messages.trashed', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -154,7 +168,7 @@ class ProductController extends Controller
         $this->product->destroy($id);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -172,7 +186,7 @@ class ProductController extends Controller
         $this->product->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -190,7 +204,7 @@ class ProductController extends Controller
         $this->product->restore($id);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 
@@ -209,14 +223,14 @@ class ProductController extends Controller
         $this->product->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('message.restored', ['model' => $this->model]),
+            'success' => trans('messages.restored', ['model' => $this->model]),
             'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
     }
 
-      /**
+    /**
      * Empty the Trash the mass resources.
      *
      * @return \Illuminate\Http\Response
@@ -226,7 +240,7 @@ class ProductController extends Controller
         $this->product->emptyTrash();
 
         $successRes = [
-            'success' => trans('message.deleted', ['model' => $this->model]),
+            'success' => trans('messages.deleted', ['model' => $this->model]),
             'status'  => 200
         ];
 

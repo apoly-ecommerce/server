@@ -82,7 +82,7 @@ abstract class EloquentRepository
             }
         }
 
-        return $this->model->find($id);
+        return $model;
 
     }
 

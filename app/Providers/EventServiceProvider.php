@@ -15,6 +15,42 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        // User Events
+        'App\Events\User\UserCreated' => [
+            'App\Listeners\User\SendLoginInfo'
+        ],
+        'App\Events\User\UserUpdated' => [
+            'App\Listeners\User\NotifyUserProfileUpdated'
+        ],
+        'App\Events\User\PasswordUpdated' => [
+            'App\Listeners\User\NotifyUserPasswordUpdated'
+        ],
+        // Customer Events
+        'App\Events\Customer\PasswordUpdated' => [
+            'App\Listeners\Customer\NotifyCustomerPasswordUpdated'
+        ],
+        // Shop Events
+        'App\Events\Shop\ShopCreated' => [
+            'App\Listeners\Shop\NotifyMerchantShopCreated'
+        ],
+        'App\Events\Shop\ShopUpdated' => [
+            'App\Listeners\Shop\NotifyMerchantShopUpdated'
+        ],
+        'App\Events\Shop\ShopDeleted' => [
+            'App\Listeners\Shop\NotifyMerchantShopDeleted'
+        ],
+        // Profile Events
+        'App\Events\Profile\PasswordUpdated' => [
+            'App\Listeners\Profile\NotifyUserPasswordUpdated'
+        ],
+        // System Events
+        'App\Events\System\DownForMaintenance' => [
+            'App\Listeners\System\NotifyAdminSystemIsDown'
+        ],
+        'App\Events\System\UpForMaintenance' => [
+            'App\Listeners\System\NotifyAdminSystemIsUp'
+        ],
+        // Auth Events
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

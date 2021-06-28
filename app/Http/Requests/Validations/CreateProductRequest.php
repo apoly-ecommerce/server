@@ -33,8 +33,8 @@ class CreateProductRequest extends Request
             'name' => 'required|unique:products',
             'description' => 'required',
             'active' => 'required',
-            'min_price' => 'nullable|numeric|min:0',
-            'max_price' => 'nullable|numeric|min:' . $this->min_price ?? 0,
+            'promotional_price' => 'required|numeric|min:0',
+            'original_price' => 'required|numeric|min:' . $this->promotional_price ?? 0,
             'image' => 'mimes:jpg,png,jpeg,gif'
         ];
     }

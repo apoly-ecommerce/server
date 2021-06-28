@@ -1,0 +1,1 @@
+<p>Send mail update password successfully !.</p>

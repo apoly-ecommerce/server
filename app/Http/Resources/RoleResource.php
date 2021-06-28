@@ -21,6 +21,9 @@ class RoleResource extends JsonResource
             'description' => $this->description,
             'public'      => $this->public,
             'level'       => $this->level,
+            'deleted_at'  => $this->deleted_at,
+            'created_at'  => $this->created_at,
+            'updated_at'  => $this->updated_at
         ];
     }
 }

@@ -123,12 +123,9 @@ trait Imageable {
 	{
 		$dir = image_storage_dir();
 
-		// if(!Storage::exists($dir))
-			// Storage::makeDirectory($dir, 0775, true, true);
-
         $path = Storage::put($dir, $image);
 
-        return $this->createImage($path, $image->getClientOriginalName(), $image->getClientOriginalExtension(), $image->getClientSize(), $type);
+        return $this->createImage($path, $image->getClientOriginalName(), $image->getClientOriginalExtension(), $image->getSize(), $type);
 	}
 	/**
      * Update images
@@ -198,7 +195,7 @@ trait Imageable {
 
 		if (optional($image)->path) {
 	    	Storage::delete($image->path);
-			Storage::deleteDirectory(image_cache_path($image->path));
+        Storage::deleteDirectory(image_cache_path($image->path));
 		    return $image->delete();
 		}
 

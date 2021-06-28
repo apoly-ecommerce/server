@@ -18,24 +18,35 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'shop_id' => $this->shop_id,
             'manufacturer' => [
-                'id'   => $this->manufacturer->id,
-                'name' => $this->manufacturer->name,
-                'slug' => $this->manufacturer->slug
+                'id'   => $this->manufacturer->id ?? null,
+                'name' => $this->manufacturer->name ?? null,
+                'slug' => $this->manufacturer->slug ?? null
             ],
             'brand' => $this->brand,
             'name' => $this->name,
             'model_number' => $this->model_number,
             'mpn' => $this->mpn,
+            'detail_information' => $this->detail_information,
             'description' => $this->description,
-            'min_price' => $this->min_price,
-            'max_price' => $this->max_price,
+            'promotional_price' => $this->promotional_price,
+            'original_price' => $this->original_price,
+            'requires_shipping' => $this->requires_shipping,
             'slug' => $this->slug,
+            'meta_title' => $this->meta_title,
+            'meta_description' => $this->meta_description,
+            'warranty_period' => $this->warranty_period,
+            'warranty_form' => $this->warranty_form,
+            'warranty_place' => $this->warranty_place,
+            'percent_refund' => $this->percent_refund,
+            'return_time' => $this->return_time,
+            'allow_inspection' => $this->allow_inspection,
             'active' => $this->active,
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'image' => get_storage_file_url(optional($this->featureImage)->path, 'cover_thumb'),
-            'categories' => $this->categories
+            'categories' => $this->categories,
+            'media_products' => $this->mediaProducts
         ];
     }
 }

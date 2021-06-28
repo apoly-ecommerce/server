@@ -34,4 +34,5 @@ class CountryController extends Controller
 
         return new ApiStatusResource($successRes);
     }
+
 }

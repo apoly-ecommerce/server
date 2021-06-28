@@ -12,6 +12,16 @@ class Address extends BaseModel
     protected $table = 'addresses';
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'country:id,name,iso_code',
+        'state:id,name,country_id,iso_code'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -55,4 +65,5 @@ class Address extends BaseModel
     {
         return $this->belongsTo(State::class);
     }
+
 }

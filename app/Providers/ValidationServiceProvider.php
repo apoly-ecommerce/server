@@ -58,7 +58,6 @@ class ValidationServiceProvider extends ServiceProvider
                 }
 
                 // Our conditional array is ready and now query the table with all the conditions
-
                 $result = \DB::table( $table )->where( $wheres )->first();
 
                 //Return FALSE if any record found
