@@ -43,9 +43,10 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $users = $this->user->allWithPaginate($request->limit);
 
@@ -60,10 +61,10 @@ class UserController extends Controller
     /**
      * Display a listing trashed of the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $users = $this->user->trashOnlyWithPaginate($request->limit);
 

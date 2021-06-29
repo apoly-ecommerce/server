@@ -95,6 +95,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\BannerGroup\EloquentBannerGroup::class
         );
 
+        $this->app->singleton(
+          \App\Repositories\Slider\SliderRepository::class,
+          \App\Repositories\Slider\EloquentSlider::class
+      );
+
 
 
         // UTILITIES

@@ -40,9 +40,10 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $customers = $this->customer->allWithPaginate($request->limit);
 
@@ -58,10 +59,10 @@ class CustomerController extends Controller
     /**
      * Display a listing trashed of the resource.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $customers = $this->customer->trashOnlyWithPaginate($request->limit);
 

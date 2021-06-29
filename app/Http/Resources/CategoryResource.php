@@ -30,8 +30,8 @@ class CategoryResource extends JsonResource
             'updated_at' => $this->updated_at,
             'products_count' => $this->products_count,
             'sub_group' => $this->subGroup,
-            'cover_image_url' => get_storage_file_url(optional($this->coverImage)->path, 'medium'),
-            'feature_image_url' => get_storage_file_url(optional($this->featureImage)->path, 'medium')
+            'cover_image' => get_storage_file_url(optional($this->coverImage)->path, 'medium'),
+            'feature_image' => get_storage_file_url(optional($this->featureImage)->path, 'medium')
         ];
     }
 }

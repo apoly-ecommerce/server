@@ -42,7 +42,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $categories = $this->category->allWithPaginate($request->limit);
 
@@ -60,7 +60,7 @@ class CategoryController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $categories = $this->category->trashOnlyWithPaginate($request->limit);
 

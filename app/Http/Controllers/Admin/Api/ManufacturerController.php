@@ -48,7 +48,7 @@ class ManufacturerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $manufacturers = $this->manufacturer->allWithPaginate($request->limit);
 
@@ -67,7 +67,7 @@ class ManufacturerController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $manufacturers = $this->manufacturer->trashOnlyWithPaginate($request->limit);
 

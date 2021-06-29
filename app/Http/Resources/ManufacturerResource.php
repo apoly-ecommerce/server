@@ -30,9 +30,9 @@ class ManufacturerResource extends JsonResource
             'country' => $this->country,
             'updated_at' => $this->updated_at,
             'products_count' => $this->products_count,
-            'cover_image_url' => get_storage_file_url(optional($this->coverImage)->path, 'cover_thumb'),
-            'logo_image_url' => get_storage_file_url(optional($this->logoImage)->path, 'cover_thumb'),
-            'feature_image_url' => get_storage_file_url(optional($this->featureImage)->path, 'cover_thumb')
+            'cover_image' => get_storage_file_url(optional($this->coverImage)->path, 'cover_thumb'),
+            'logo_image' => get_storage_file_url(optional($this->logoImage)->path, 'cover_thumb'),
+            'feature_image' => get_storage_file_url(optional($this->featureImage)->path, 'cover_thumb')
         ];
     }
 }

@@ -49,9 +49,10 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $roles = $this->role->allWithPaginate($request->limie);
 
@@ -70,7 +71,7 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $roles = $this->role->trashOnlyWithPaginate($request->limit);
 

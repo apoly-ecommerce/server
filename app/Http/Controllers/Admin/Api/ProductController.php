@@ -34,7 +34,7 @@ class ProductController extends Controller
         //
     }
 
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $products = $this->product->allWithPaginate($request->limit);
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $products = $this->product->trashOnlyWithPaginate($request->limit);
 

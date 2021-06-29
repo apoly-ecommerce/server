@@ -27,8 +27,8 @@ class CategoryGroupResource extends JsonResource
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'background_image_url' => get_storage_file_url(optional($this->backgroundImage)->path, 'cover_thumb'),
-            'cover_image_url' => get_storage_file_url(optional($this->coverImage)->path, 'cover_thumb'),
+            'background_image' => get_storage_file_url(optional($this->backgroundImage)->path, 'cover_thumb'),
+            'cover_image' => get_storage_file_url(optional($this->coverImage)->path, 'cover_thumb'),
             'sub_groups' => $this->subGroups,
             'sub_groups_count' => $this->sub_groups_count,
         ];

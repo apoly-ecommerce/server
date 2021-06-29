@@ -7,7 +7,6 @@ use App\Http\Requests\Validations\CreateCategoryGroupRequest;
 use App\Http\Requests\Validations\UpdateCategoryGroupRequest;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Resources\CategoryGroupResource;
-use App\Http\Resources\HierarchyCategoryGroupResource;
 use App\Repositories\CategoryGroup\CategoryGroupRepository;
 use Illuminate\Http\Request;
 
@@ -48,7 +47,7 @@ class CategoryGroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allPaginate(Request $request)
+    public function paginate(Request $request)
     {
         $categoryGroups = $this->categoryGroup->allWithPaginate($request->limit);
 
@@ -67,14 +66,13 @@ class CategoryGroupController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function allTrashedPaginate(Request $request)
+    public function trashedPaginate(Request $request)
     {
         $categoryGroups = $this->categoryGroup->trashOnlyWithPaginate($request->limit);
 
         $successRes = [
             'categoryGroups' => CategoryGroupResource::collection($categoryGroups),
             'total'  => $this->categoryGroup->trashOnly()->count(),
-            'status' => 200,
         ];
 
         return new ApiStatusResource($successRes);
@@ -93,7 +91,6 @@ class CategoryGroupController extends Controller
         $successRes = [
             'success' => trans('messages.created', ['model' => $this->model]),
             'catGrp'  => new CategoryGroupResource($catGrp),
-            'status'  => 200,
         ];
 
         return new ApiStatusResource($successRes);
@@ -111,7 +108,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'categoryGroup' => new CategoryGroupResource($categoryGroup),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -131,7 +127,6 @@ class CategoryGroupController extends Controller
         $successRes = [
             'success' => trans('messages.updated', ['model' => $this->model]),
             'categoryGroup' => new CategoryGroupResource($catGrp),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -149,7 +144,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.trashed', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -167,7 +161,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.trashed', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -185,7 +178,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.deleted', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -203,7 +195,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.deleted', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -221,7 +212,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.restored', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -239,7 +229,6 @@ class CategoryGroupController extends Controller
 
         $successRes = [
             'success' => trans('messages.restored', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
