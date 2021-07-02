@@ -229,3 +229,11 @@ if (! function_exists('is_serialized'))
         return false;
     }
 }
+
+if (! function_exists('get_percentage'))
+{
+    function get_percentage($old_num, $new_num)
+    {
+        return (($old_num - $new_num)*100) / $old_num;
+    }
+}

@@ -19,6 +19,14 @@ class EloquentProduct extends EloquentRepository implements BaseRepository, Prod
         $this->model = $product;
     }
 
+    public function all()
+    {
+        if (Auth::user()->isFromPlatform()) {
+            return $this->model->with('categories')->get();
+        }
+        return $this->model->mine()->with('categories')->get();
+    }
+
     public function allWithPaginate($limit)
     {
         if (Auth::user()->isFromPlatform()) {

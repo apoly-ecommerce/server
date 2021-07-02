@@ -30,6 +30,7 @@ return [
         'config' => 'Config',
         'faqTopic' => 'Faq Topic',
         'faq' => 'Faq',
+        'inventory' => 'Inventory',
     ],
     'no_img_available' => 'No_Image_Found',
     'guest_customer' => 'Guest customer',

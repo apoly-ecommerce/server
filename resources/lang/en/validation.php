@@ -149,11 +149,7 @@ return [
 
     'attributes' => [],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Role validation
-    |--------------------------------------------------------------------------
-    */
+
     'role_name_required' => 'The name of role is required.',
     'role_name_unique'   => 'The name of role already exists.',
     'role_type_required' => 'Please select role type.',
@@ -165,5 +161,10 @@ return [
     'brand_logo_mimes' => 'The brand logo must be a file of type: :values.',
     'brand_logo_max' => 'The brand logo may not be greater than :max kilobytes.',
     'slider_image_required' => 'The slider image is required',
+
+    'offer_start_required' => 'When you have an offer price, the offer start date is required.',
+    'offer_start_after' => 'The promotion start time can\'t be a past time.',
+    'offer_end_required' => 'When you have an offer price, the offer end date is required.',
+    'offer_end_after' => 'The offer end time must be a time after the offer start time.'
 
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ use App\Http\Requests\Validations\UpdateRoleRequest;
 
 class RoleController extends Controller
 {
+
+    use Authorizable;
 
     protected $model_name;
     protected $role;

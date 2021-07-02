@@ -30,7 +30,8 @@ class UserAuthResource extends JsonResource
                 'name' => $this->role->name,
                 'level' => $this->role->level
             ],
-            'permissions' => $this->role->permissions,
+            'permissions' => $this->role->permissions->pluck('slug')->toArray(),
+            'moduleAccess' => $this->role->permissions,
             'image' => get_storage_file_url(optional($this->image)->path, 'medium'),
         ];
     }

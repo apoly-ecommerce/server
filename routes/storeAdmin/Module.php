@@ -1,3 +1,3 @@
 <?php
 
-Route::get('module/list', 'Api\ModuleController@index')->name('index');
+Route::get('module/list', 'Api\ModuleController@index')->name('module.index');

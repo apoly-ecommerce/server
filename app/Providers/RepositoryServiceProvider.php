@@ -114,5 +114,12 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Faq\EloquentFaq::class
         );
 
+        // STOCK
+
+        $this->app->singleton(
+          \App\Repositories\Inventory\InventoryRepository::class,
+          \App\Repositories\Inventory\EloquentInventory::class
+      );
+
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Events\Shop\ShopUpdated;
 use App\Events\Shop\ShopDeleted;
 use App\Http\Resources\ShopResource;
@@ -13,6 +14,8 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    use Authorizable;
+
     protected $model;
     protected $shop;
 

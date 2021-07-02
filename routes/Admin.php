@@ -44,6 +44,11 @@ Route::group([
                 include('storeAdmin/Product.php');
             });
 
+            // Stock Routes for Admin
+            Route::group(['as' => 'stock.', 'prefix' => 'stock'], function() {
+                include('storeAdmin/Inventory.php');
+            });
+
             // Admin Routes for Admin.
             Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
                 include('storeAdmin/User.php');
@@ -51,7 +56,7 @@ Route::group([
             });
 
             // Vendor Routes for Admin.
-            Route::group(['as' => 'vendor,', 'prefix' => 'vendor'], function() {
+            Route::group(['as' => 'vendor.', 'prefix' => 'vendor'], function() {
                 include('storeAdmin/Merchant.php');
                 include('storeAdmin/Shop.php');
             });

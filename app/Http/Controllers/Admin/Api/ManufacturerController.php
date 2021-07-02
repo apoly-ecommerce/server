@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateManufacturerRequest;
 use App\Http\Requests\Validations\UpdateManufacturerRequest;
@@ -12,6 +13,7 @@ use App\Repositories\Manufacturer\ManufacturerRepository;
 
 class ManufacturerController extends Controller
 {
+    use Authorizable;
 
     protected $model;
     protected $manufacturer;

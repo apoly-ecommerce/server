@@ -16,7 +16,10 @@ class VerifyUserIsSubscribed
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->isFromPlatform()) {
+        if (
+            $request->user()->isFromPlatform() ||
+            $request->user()->isSubscribed()
+        ) {
             return $next($request);
         }
         return (new ApiStatusResource([

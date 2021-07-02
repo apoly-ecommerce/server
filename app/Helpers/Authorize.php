@@ -25,7 +25,7 @@ class Authorize
      *
      * @return bool
      */
-    public function check() : bool
+    public function check()
     {
 
         // Application user.
@@ -47,6 +47,13 @@ class Authorize
             // Check shop_id of user and shop_id of model
             && ! $this->merchantAuth())
         { return false; }
+
+        // return true;
+
+        // return [
+        //     'slug' => $this->slug,
+        //     'roles' => $this->permissionSlugs()
+        // ];
 
         return in_array($this->slug, $this->permissionSlugs());
 
@@ -92,7 +99,7 @@ class Authorize
      *
      * @return array
      */
-    private function permissionSlugs() : array
+    private function permissionSlugs()
     {
         return $this->user->role->permissions()->pluck('slug')->toArray();
     }

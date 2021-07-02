@@ -97,6 +97,7 @@ class Role extends BaseModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
+
     public function scopeLowerPrivileged($query)
     {
         if (Auth::user()->isFromPlatform()){
@@ -109,6 +110,26 @@ class Role extends BaseModel
             return $query->where('shop_id', Auth::user()->merchantId())->whereNull('level')->orWhere('level', '>', Auth::user()->role->level);
         } return $query->where('shop_id', Auth::user()->merchantId())->whereNull('level');
 
+    }
+
+    /**
+     * Scope a query to only include public roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublic($query)
+    {
+        return $query->where('active', 1)->whereNull('shop_id');
+    }
+
+    /**
+     * Scope a query to only include non public roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNonPublic($query)
+    {
+        return $query->where('active', '!=', '1');
     }
 
 }

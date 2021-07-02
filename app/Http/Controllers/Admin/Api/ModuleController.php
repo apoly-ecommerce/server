@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Resources\ModuleResource;
@@ -10,6 +11,8 @@ use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
+
+    use Authorizable;
 
     protected $model_name;
     protected $module;

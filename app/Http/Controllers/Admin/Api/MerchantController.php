@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Events\Profile\PasswordUpdated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,9 @@ use App\Repositories\User\UserRepository;
 
 class MerchantController extends Controller
 {
+
+    use Authorizable;
+
     protected $model;
     protected $merchant;
     protected $user;

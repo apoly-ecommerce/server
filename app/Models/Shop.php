@@ -32,9 +32,7 @@ class Shop extends BaseModel
      */
     protected $casts = [
         'active' => 'boolean',
-        'hide_trial_notice' => 'boolean',
-        'payment_verified' => 'boolean',
-        'is_verified' => 'boolean',
+        'is_subscribed' => 'boolean',
         'phone_verified' => 'boolean',
         'address_verified' => 'boolean'
     ];
@@ -65,17 +63,8 @@ class Shop extends BaseModel
         'slug',
         'description',
         'external_url',
-        'timezone_id',
-        'current_billing_plan',
-        'stripe_id',
-        'card_holder_name',
-        'card_brand',
-        'card_last_four',
-        'trial_ends_at',
-        'hide_trial_notice',
         'active',
-        'payment_verified',
-        'id_verified',
+        'is_subscribed',
         'phone_verified',
         'address_verified',
     ];
@@ -142,6 +131,24 @@ class Shop extends BaseModel
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    /**
+     * Check if the vendor can create listing using this product.
+     *
+     * @return boolean
+     */
+    public function canAddThisInventory($product)
+    {
+        if (! $product instanceof Product) {
+            $product = Product::select('shop_id')->where('id', $product)->first();
+        }
+
+        if (! $product) {
+            return false;
+        }
+
+        return $product->shop_id == $this->id;
     }
 
 }

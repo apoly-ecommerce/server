@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateCategoryGroupRequest;
 use App\Http\Requests\Validations\UpdateCategoryGroupRequest;
@@ -12,6 +13,8 @@ use Illuminate\Http\Request;
 
 class CategoryGroupController extends Controller
 {
+
+    use Authorizable;
 
     protected $model;
     protected $categoryGroup;

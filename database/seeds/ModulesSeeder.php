@@ -12,31 +12,91 @@ class ModulesSeeder extends BaseSeeder
         ],
         'Attribute' => [
             'access' => 'Common',
-            'actions' => 'view,add,update,delete'
+            'actions' => 'view,add,edit,delete'
         ],
         'Category' => [
             'access' => 'Platform',
-            'actions' => 'view,add,update,delete'
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Category Group' => [
+            'access' => 'Platform',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Category Sub Group' => [
+            'access' => 'Platform',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Chat Conversation' => [
+            'access' => 'Merchant',
+            'actions' => 'view,reply,delete'
         ],
         'Config' => [
             'access' => 'Merchant',
             'actions' => 'view,edit'
         ],
+        'Coupon' => [
+            'access' => 'Merchant',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Cart' => [
+            'access' => 'Common',
+            'actions' => 'view,add,edit,delete'
+        ],
         'Customer' => [
             'access' => 'Platform',
-            'actions' => 'view,add,update,delete'
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Inventory' => [
+            'access' => 'Merchant',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Manufacturer' => [
+            'access' => 'Common',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Message' => [
+            'access' => 'Common',
+            'actions' => 'view,add,edit,delete'
         ],
         'Module' => [
             'access' => 'Super Admin',
-            'actions' => 'view,add,update,delete'
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Order' => [
+            'access' => 'Common',
+            'actions' => 'view,add,fulfill,cancel,archive,delete'
+        ],
+        'Product' => [
+            'access' => 'Common',
+            'actions' => 'view,add,edit,delete'
+        ],
+        'System' => [
+            'access' => 'Super Admin',
+            'actions' => 'view,edit'
+        ],
+        'System Config' => [
+            'access' => 'Platform',
+            'actions' => 'view,edit'
+        ],
+        'Vendor' => [
+            'access' => 'Platform',
+            'actions' => 'view,add,edit,delete,login'
+        ],
+        'Utility' => [
+            'access' => 'Platform',
+            'actions' => 'view,add,edit,delete'
         ],
         'Role' => [
             'access' => 'Common',
-            'actions' => 'view,add,update,delete',
+            'actions' => 'view,add,edit,delete',
         ],
         'User' => [
             'access' => 'Common',
-            'actions' => 'view,add,update,delete'
+            'actions' => 'view,add,edit,delete'
+        ],
+        'Module' => [
+            'access' => 'Common',
+            'actions' => 'view,add,edit,delete'
         ]
     ];
 

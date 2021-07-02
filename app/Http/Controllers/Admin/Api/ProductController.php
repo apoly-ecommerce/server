@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateProductRequest;
 use App\Http\Requests\Validations\UpdateProductRequest;
@@ -12,6 +13,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    use Authorizable;
 
     protected $model;
     protected $product;
@@ -31,9 +34,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = $this->product->all();
+
+        $successRes = [
+            'products' => ProductResource::collection($products),
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
+    /**
+     * Display a listing trashed of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function paginate(Request $request)
     {
         $products = $this->product->allWithPaginate($request->limit);
@@ -41,7 +56,6 @@ class ProductController extends Controller
         $successRes = [
             'products' => ProductResource::collection($products),
             'total'  => $this->product->all()->count(),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -60,7 +74,6 @@ class ProductController extends Controller
         $successRes = [
             'products' => ProductResource::collection($products),
             'total'  => $this->product->trashOnly()->count(),
-            'status' => 200,
         ];
 
         return new ApiStatusResource($successRes);
@@ -78,7 +91,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.created', ['model' => $this->model]),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -96,7 +108,6 @@ class ProductController extends Controller
 
         $successRes = [
             'product' => new ProductResource($product),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -115,7 +126,6 @@ class ProductController extends Controller
 
         $successRes = [
           'success' => trans('messages.updated', ['model' => $this->model]),
-          'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -133,7 +143,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.trashed', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -151,7 +160,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.trashed', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -169,7 +177,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.deleted', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -187,7 +194,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.deleted', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -205,7 +211,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.restored', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -224,7 +229,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.restored', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -241,7 +245,6 @@ class ProductController extends Controller
 
         $successRes = [
             'success' => trans('messages.deleted', ['model' => $this->model]),
-            'status'  => 200
         ];
 
         return new ApiStatusResource($successRes);

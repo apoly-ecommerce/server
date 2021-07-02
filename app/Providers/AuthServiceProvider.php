@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\Country::class => \App\Policies\CountryPolicy::class,
         \App\Models\Currency::class => \App\Policies\CurrencyPolicy::class,
         \App\Models\GiftCard::class => \App\Policies\GiftCardPolicy::class,
-        \App\Models\Inventory::class => \App\Policies\InventoryPolicy::class,
+        \App\Models\Inventory::class => \App\Policies\InventoryPolicy::class, // ok
         \App\Models\Manufacturer::class => \App\Policies\ManufacturerPolicy::class,
         \App\Models\Merchant::class => \App\Policies\MerchantPolicy::class, // ok
         \App\Models\Message::class => \App\Policies\MessagePolicy::class,

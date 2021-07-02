@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiStatusResource;
 use App\Repositories\BannerGroup\BannerGroupRepository;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 
 class BannerGroupController extends Controller
 {
+    use Authorizable;
+
     protected $model;
     protected $bannerGroup;
 

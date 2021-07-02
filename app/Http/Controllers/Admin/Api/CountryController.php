@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Resources\CountryResource;
@@ -10,6 +11,9 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
+
+    use Authorizable;
+
     protected $model;
     protected $country;
 

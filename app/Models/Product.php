@@ -17,6 +17,13 @@ class Product extends BaseModel
     protected $table = 'products';
 
     /**
+     * Cascade SoftDeletes Relationships.
+     *
+     * @var string
+     */
+    protected $cascadeDeletes = ['inventories'];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -69,11 +76,27 @@ class Product extends BaseModel
     }
 
     /**
+     * Get the shop associated with the product.
+     */
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
+
+    /**
      * Get the categories for the product
      */
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Get the Inventory for the Product.
+     */
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
     }
 
     /**

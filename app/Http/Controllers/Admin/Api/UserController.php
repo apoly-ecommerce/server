@@ -16,6 +16,7 @@ use App\Repositories\User\UserRepository;
 use App\Http\Requests\Validations\CreateUserRequest;
 use App\Http\Requests\Validations\UpdateUserRequest;
 use App\Http\Requests\Validations\AdminUserUpdatePasswordRequest as UpdatePasswordRequest;
+use App\Http\Resources\PermissionResource;
 
 class UserController extends Controller
 {
@@ -105,8 +106,9 @@ class UserController extends Controller
     public function userAuth(Request $request)
     {
         $user = $request->user();
+
         $successRes = [
-            'user' => new UserAuthResource($user)
+            'user' => new UserAuthResource($user),
         ];
         return new ApiStatusResource($successRes);
     }

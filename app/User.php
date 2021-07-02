@@ -250,9 +250,7 @@ class User extends Authenticatable
             return false;
         }
 
-        $subscription = optional($this->shop->subscriptions)->first();
-
-        return $subscription && $subscription->valid() || $this->isOnGenericTrial();
+        return $this->shop->is_subscribed;
     }
 
     /**

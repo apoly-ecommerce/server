@@ -24,8 +24,6 @@ trait Authorizable
         'getRolePermissionsByUser'  => 'view',
         'allTrashed'    => 'view',
         'infoUserLogin' => 'view',
-        'allPaginate' => 'view',
-        'allTrashedPaginate' => 'view',
         'hierarchy' => 'view',
         'mine' => 'view',
         'byCountry' => 'view',
@@ -72,7 +70,8 @@ trait Authorizable
      * @var array
      */
     private $utility_modules = [
-
+        'faq',
+        'faqTopic',
     ];
 
     /**
@@ -82,7 +81,9 @@ trait Authorizable
      * @var array
      */
     private $appearance_modules = [
-
+        'theme',
+        'banner',
+        'slider',
     ];
 
     /**
@@ -92,7 +93,7 @@ trait Authorizable
      * @var array
      */
     private $update_exception_modules = [
-
+        'message',
     ];
 
     /**
@@ -107,7 +108,7 @@ trait Authorizable
     {
         if (! $this->checkPermission('', $parameters)) {
             return (new ApiStatusResource([
-                'errors' => [ 'unAuthorize' => trans('messages.permission.denied') ],
+                'errors' => $this->getSlug(),
                 'status' => 403
             ]))->setStatusCode(403);
         }
@@ -137,9 +138,10 @@ trait Authorizable
      * @param $module
      * @return string $slug
      */
-    private function getSlug($action = null, $module = null) : string
+    private function getSlug($action = null, $module = null)
     {
         $nameOfRoutes = explode('.', \Request::route()->getName());
+
         $module = $module ? $module : array_splice($nameOfRoutes, -2, 1)[0];
         $action = $action ? $action : array_splice($nameOfRoutes, -1, 1)[0];
 

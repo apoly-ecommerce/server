@@ -43,6 +43,7 @@ class CreateShopForMerchant
             'email' => $this->merchant->email,
             'slug' => isset($this->request['slug']) ? $this->request['slug'] : Str::slug($this->request['shop_name']),
             'external_url' => isset($this->request['external_url']) ? $this->request['external_url'] : null,
+            'is_subscribed' => 1,
             'active' => $this->request['active'],
         ]);
 

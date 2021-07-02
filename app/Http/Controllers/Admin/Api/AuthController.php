@@ -6,13 +6,35 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\AuthUserLoginRequest;
 use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\UserAuthResource;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+    /**
+     * Get user is logged
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function user(Request $request)
+    {
+        $user = $request->user();
+
+        $successRes = [
+            'user' => new UserAuthResource($user),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
     public function register(Request $request)
     {
+
     }
+
 
     public function login(AuthUserLoginRequest $request)
     {
