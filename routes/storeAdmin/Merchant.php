@@ -1,5 +1,7 @@
 <?php
 
+Route::get('merchant/setup', 'Api\MerchantController@setup')->name('merchant.setup');
+
 Route::get('merchant/paginate', 'Api\MerchantController@paginate')->name('merchant.paginate');
 
 Route::get('merchant/trashed/paginate', 'Api\MerchantController@trashedPaginate')->name('merchant.trashedPaginate');

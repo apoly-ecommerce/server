@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Validations;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class CreateFaqTopicRequest extends FormRequest
+class CreateFaqTopicRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateManufacturerRequest;
 use App\Http\Requests\Validations\UpdateManufacturerRequest;
 use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\CountryResource;
 use App\Http\Resources\ManufacturerResource;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Repositories\Manufacturer\ManufacturerRepository;
 
@@ -42,6 +44,22 @@ class ManufacturerController extends Controller
       ];
 
       return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $countries = Country::all();
+
+        $successRes = [
+            'countries' => CountryResource::collection($countries)
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
 

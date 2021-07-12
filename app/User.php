@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'host_id',
+        'shop_id',
         'role_id',
         'name',
         'nice_name',
@@ -164,9 +164,6 @@ class User extends Authenticatable
     public function isMerchant()
     {
         return $this->role_id == Role::MERCHANT;
-        // return 'hello';
-        // return $this->role_id;
-        // return \App\Models\Role::MERCHANT;
     }
 
     /**

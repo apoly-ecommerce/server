@@ -36,29 +36,6 @@ class System extends BaseModel
         'slogan',
         'legal_name',
         'email',
-        'google_analytic_report',
-        'ask_customer_for_email_subscription',
-        'support_phone',
-        'support_phone_toll_free',
-        'support_email' => '',
-        'default_sender_email_address',
-        'default_email_sender_name',
-        'facebook_link' => '',
-        'google_plus_link',
-        'instagram_link',
-        'youtube_link',
-        'show_currency_symbol',
-        'address_default_country',
-        'address_default_state',
-        'show_address_title',
-        'address_show_country',
-        'address_show_map',
-        'allow_guest_checkout',
-        'auto_approve_order',
-        'notify_when_vendor_registered',
-        'notify_when_dispute_appealed',
-        'notify_new_message',
-        'enable_chat'
     ];
 
     /**
@@ -68,18 +45,6 @@ class System extends BaseModel
      */
     protected $casts = [
         'maintenance_mode' => 'boolean',
-        'google_analytic_report' => 'boolean',
-        'ask_customer_for_email_subscription' => 'boolean',
-        'show_currency_symbol' => 'boolean',
-        'show_address_title' => 'boolean',
-        'address_show_country' => 'boolean',
-        'address_show_map' => 'boolean',
-        'allow_guest_checkout' => 'boolean',
-        'auto_approve_order' => 'boolean',
-        'notify_when_vendor_registered' => 'boolean',
-        'notify_when_dispute_appealed' => 'boolean',
-        'notify_new_message' => 'boolean',
-        'enable_chat' => 'boolean'
     ];
 
     /**

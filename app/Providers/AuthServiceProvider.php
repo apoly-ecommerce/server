@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\Category::class => \App\Policies\CategoryPolicy::class, // ok
         \App\Models\CategoryGroup::class => \App\Policies\CategoryGroupPolicy::class, // ok
         \App\Models\CategorySubGroup::class => \App\Policies\CategorySubGroupPolicy::class, // ok
-        \App\Models\Config::class => \App\Policies\ConfigPolicy::class,
+        \App\Models\Config::class => \App\Policies\ConfigPolicy::class, // ok
         \App\Models\Coupon::class => \App\Policies\CouponPolicy::class,
         \App\Models\Customer::class => \App\Policies\CustomerPolicy::class, // ok
         \App\Models\Country::class => \App\Policies\CountryPolicy::class,
@@ -37,7 +37,8 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\Shop::class => \App\Policies\ShopPolicy::class, // ok
         \App\Models\ShippingRate::class => \App\Policies\ShippingRatePolicy::class,
         \App\Models\ShippingZone::class => \App\Policies\ShippingZonePolicy::class,
-        \App\Models\System::class => \App\Policies\SystemPolicy::class,
+        \App\Models\System::class => \App\Policies\SystemPolicy::class, // ok
+        \App\Models\SystemConfig::class => \App\Policies\SystemConfigPolicy::class, // ok
         \App\User::class => \App\Policies\UserPolicy::class // ok
     ];
 

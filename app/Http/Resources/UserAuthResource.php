@@ -17,6 +17,7 @@ class UserAuthResource extends JsonResource
         return [
             'id' => $this->id,
             'role_id' => $this->role_id,
+            'shop_id' => $this->shop_id,
             'name' => $this->name,
             'nice_name' => $this->nice_name,
             'active' => $this->active,

@@ -1,5 +1,7 @@
 <?php
 
+Route::get('categorySubGroup/setup', 'Api\CategorySubGroupController@setup')->name('categorySubGroup.setup');
+
 Route::get('categorySubGroup/paginate', 'Api\CategorySubGroupController@paginate')->name('categorySubGroup.paginate');
 
 Route::get('categorySubGroup/trashed/paginate', 'Api\CategorySubGroupController@trashedPaginate')->name('categorySubGroup.trashedPaginate');
@@ -13,6 +15,8 @@ Route::patch('categorySubGroup/{categorySubGroup}/restore', 'Api\CategorySubGrou
 Route::patch('categorySubGroup/massRestore', 'Api\CategorySubGroupController@massRestore')->name('categorySubGroup.massRestore');
 
 Route::delete('categorySubGroup/massDestroy', 'Api\CategorySubGroupController@massDestroy')->name('categorySubGroup.massDestroy');
+
+Route::delete('categorySubGroup/emptyTrash', 'Api\CategorySubGroupController@emptyTrash')->name('categorySubGroup.emptyTrash');
 
 Route::delete('categorySubGroup/emptyTrash', 'Api\CategorySubGroupController@emptyTrash')->name('categorySubGroup.emptyTrash');
 

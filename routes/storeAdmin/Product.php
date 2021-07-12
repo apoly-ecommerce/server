@@ -1,4 +1,5 @@
 <?php
+Route::get('product/setup', 'Api\ProductController@setup')->name('product.setup');
 
 Route::get('product/paginate', 'Api\ProductController@paginate')->name('product.paginate');
 

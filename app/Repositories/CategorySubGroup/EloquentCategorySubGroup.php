@@ -50,4 +50,15 @@ class EloquentCategorySubGroup extends EloquentRepository implements BaseReposit
         return parent::massDestroy($ids);
     }
 
+    public function emptyTrash()
+    {
+        $catSubGrps = $this->model->onlyTrashed()->get();
+
+        foreach ($catSubGrps as $catSubGrp) {
+          $catSubGrp->flushImages();
+      }
+
+        return parent::emptyTrash();
+    }
+
 }

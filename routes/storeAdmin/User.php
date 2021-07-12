@@ -1,4 +1,7 @@
 <?php
+// User
+
+Route::get('user/setup', 'Api\UserController@setup')->name('user.setup');
 
 Route::get('user/auth', 'Api\UserController@userAuth')->name('user.userAuth');
 

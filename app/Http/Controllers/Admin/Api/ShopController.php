@@ -9,6 +9,8 @@ use App\Http\Resources\ShopResource;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\UpdateShopRequest;
+use App\Http\Resources\CountryResource;
+use App\Models\Country;
 use App\Repositories\Shop\ShopRepository;
 use Illuminate\Http\Request;
 
@@ -38,6 +40,22 @@ class ShopController extends Controller
     public function index()
     {
         //
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $countries = Country::all();
+
+        $successRes = [
+            'countries' => CountryResource::collection($countries)
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**

@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateProductRequest;
 use App\Http\Requests\Validations\UpdateProductRequest;
 use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\CategorySubGroupResource;
+use App\Http\Resources\ManufacturerResource;
 use App\Http\Resources\ProductResource;
+use App\Models\CategorySubGroup;
+use App\Models\Manufacturer;
 use App\Repositories\Product\ProductRepository;
 use Illuminate\Http\Request;
 
@@ -38,6 +42,24 @@ class ProductController extends Controller
 
         $successRes = [
             'products' => ProductResource::collection($products),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $manufacturers = Manufacturer::all();
+        $categorySubGroups = CategorySubGroup::all();
+
+        $successRes = [
+            'manufacturers' => ManufacturerResource::collection($manufacturers),
+            'categorySubGroups' => CategorySubGroupResource::collection($categorySubGroups)
         ];
 
         return new ApiStatusResource($successRes);

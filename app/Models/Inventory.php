@@ -54,6 +54,8 @@ class Inventory extends BaseModel
         'purchase_price',
         'sale_price',
         'offer_price',
+        'offer_start',
+        'offer_end',
         'min_order_quantity',
         'slug',
         'linked_items',
@@ -155,21 +157,21 @@ class Inventory extends BaseModel
     public function setAvailableFromAttribute($value)
     {
         if ($value) {
-            $this->attributes['available_from'] = Carbon::createFromFormat('Y-m-d h:i a', $value);
+            $this->attributes['available_from'] = Carbon::createFromFormat('Y-m-d h:i', $value);
         }
     }
 
     public function setOfferStartAttribute($value)
     {
         if ($value) {
-            $this->attributes['offer_start'] = Carbon::createFromFormat('Y-m-d h:i a', $value);
+            $this->attributes['offer_start'] = Carbon::createFromFormat('Y-m-d h:i', $value);
         }
     }
 
     public function setOfferEndAttribute($value)
     {
         if ($value) {
-            $this->attributes['offer_end'] = Carbon::createFromFormat('Y-m-d h:i a', $value);
+            $this->attributes['offer_end'] = Carbon::createFromFormat('Y-m-d h:i', $value);
         }
     }
 

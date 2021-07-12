@@ -14,6 +14,8 @@ use App\Http\Requests\Validations\UpdateMerchantRequest;
 use App\Http\Requests\Validations\AdminUpdateMerchantPasswordRequest;
 use App\Http\Resources\MerchantResource;
 use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\CountryResource;
+use App\Models\Country;
 use App\Repositories\Merchant\MerchantRepository;
 use App\Repositories\User\UserRepository;
 
@@ -46,6 +48,22 @@ class MerchantController extends Controller
     public function index()
     {
         //
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $countries = Country::all();
+
+        $successRes = [
+            'countries' => CountryResource::collection($countries)
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**
@@ -93,6 +111,7 @@ class MerchantController extends Controller
         $merchant = $this->merchant->store($request);
 
         $user = $this->user->find($merchant->id);
+
         // // Dispatching Shop create job.
         CreateShopForMerchant::dispatch($user, $request->all());
 

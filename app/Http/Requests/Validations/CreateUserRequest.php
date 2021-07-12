@@ -26,7 +26,6 @@ class CreateUserRequest extends Request
       return [
             'name'  => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'phone' => 'required|unique:users',
             'password' => 'required|confirmed|min:6',
             'role_id' => 'required',
             'dob' => 'nullable|date',

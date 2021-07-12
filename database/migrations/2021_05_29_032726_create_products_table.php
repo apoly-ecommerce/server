@@ -23,8 +23,6 @@ class CreateProductsTable extends Migration
             $table->string('mpn')->nullable();
             $table->longText('detail_information')->nullable();
             $table->longtext('description')->nullable();
-            $table->double('promotional_price', 20, 6);
-            $table->double('original_price', 20, 6);
             $table->boolean('requires_shipping')->default(1)->nullable();
             $table->string('slug')->unique();
             $table->text('meta_title')->nullable();

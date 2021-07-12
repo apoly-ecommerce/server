@@ -33,5 +33,19 @@ return [
 
     'system_is_up' => 'The marketplace goes UP!',
 
-    'cant_delete_faq_topic'=> 'Can\'t delete: Please delete all FAQs under the :topic and try again!'
+    'cant_delete_faq_topic'=> 'Can\'t delete: Please delete all FAQs under the :topic and try again!',
+
+    'shop_down_for_maintenance' => 'Shop goes DOWN!',
+
+    'shop_up_for_maintenance' => 'Shop is back to LIVE!',
+
+    'photo_profile_updated' => 'Photo Profile Updated successfully!',
+
+    'photo_profile_deleted' => 'Photo Profile Deleted successfully!',
+
+    'profile_updated' => 'Profile Updated successfully!',
+
+    'incorrect_current_password' => 'Your current password is not correct. Please try again!',
+
+    'system_info_updated' => 'System information updated!',
 ];

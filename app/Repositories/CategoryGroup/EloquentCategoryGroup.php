@@ -52,4 +52,15 @@ class EloquentCategoryGroup extends EloquentRepository implements BaseRepository
         return parent::massDestroy($ids);
     }
 
+    public function emptyTrash()
+    {
+        $catGrps = $this->model->onlyTrashed()->get();
+
+        foreach ($catGrps as $catGrp) {
+            $catGrp->flushImages();
+        }
+
+        return parent::emptyTrash();
+    }
+
 }

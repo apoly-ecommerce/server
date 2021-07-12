@@ -23,10 +23,11 @@ class UpdateRoleRequest extends Request
      */
     public function rules()
     {
+        $id = Request::segment(count(Request::segments())); //Current model ID
         $shop_id = Request::user()->merchantId(); //Get current user's shop_id
 
         $rules = [];
-        $rules['name'] = 'bail|required|composite_unique:roles,shop_id:'.$shop_id;
+        $rules['name'] = 'bail|required|composite_unique:roles,shop_id:'.$shop_id.', '.$id;
 
         if (Request::user()->accessLevel()) {
             $rules['level'] = 'nullable|integer|between:'.Request::user()->accessLevel().','.(99);

@@ -77,7 +77,7 @@ class Role extends BaseModel
      *
      * @return bool
      */
-    public function isSuperAdmin() : bool
+    public function isSuperAdmin()
     {
         return $this->id == static::SUPER_ADMIN;
     }
@@ -87,7 +87,7 @@ class Role extends BaseModel
      *
      * @return bool
      */
-    public function isSpecial() : bool
+    public function isSpecial()
     {
         return $this->id <= static::MERCHANT;
     }
@@ -103,12 +103,16 @@ class Role extends BaseModel
         if (Auth::user()->isFromPlatform()){
             if (Auth::user()->role->level) {
                 return $query->whereNull('level')->orWhere('level', '>', Auth::user()->role->level);
-            } return $query->whereNull('level');
+            }
+
+            return $query->whereNull('level');
         }
 
         if (Auth::user()->role->level) {
             return $query->where('shop_id', Auth::user()->merchantId())->whereNull('level')->orWhere('level', '>', Auth::user()->role->level);
-        } return $query->where('shop_id', Auth::user()->merchantId())->whereNull('level');
+        }
+
+        return $query->where('shop_id', Auth::user()->merchantId())->whereNull('level');
 
     }
 

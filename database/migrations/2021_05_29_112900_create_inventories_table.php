@@ -29,7 +29,10 @@ class CreateInventoriesTable extends Migration
             $table->decimal('purchase_price', 20, 6)->nullable();
             $table->decimal('sale_price', 20, 6);
             $table->decimal('offer_price', 20, 6)->nullable();
+            $table->timestamp('offer_start')->nullable();
+            $table->timestamp('offer_end')->nullable();
 
+            $table->timestamp('available_from')->useCurrent();
             $table->integer('min_order_quantity')->default(1);
             $table->string('slug', 200)->unique();
             $table->text('linked_items')->nullable();

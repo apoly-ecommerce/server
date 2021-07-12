@@ -9,6 +9,7 @@ use App\Http\Requests\Validations\CreateBannerRequest;
 use App\Http\Requests\Validations\UpdateBannerRequest;
 use App\Http\Resources\BannerResource;
 use App\Http\Resources\ApiStatusResource;
+use App\Models\BannerGroup;
 use App\Repositories\Banner\BannerRepository;
 
 class BannerController extends Controller
@@ -39,6 +40,22 @@ class BannerController extends Controller
 
         $successRes = [
             'banners' => BannerResource::collection($banners),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $bannerGroups = BannerGroup::all();
+
+        $successRes = [
+            'bannerGroups' => $bannerGroups
         ];
 
         return new ApiStatusResource($successRes);

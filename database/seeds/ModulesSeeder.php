@@ -97,7 +97,15 @@ class ModulesSeeder extends BaseSeeder
         'Module' => [
             'access' => 'Common',
             'actions' => 'view,add,edit,delete'
-        ]
+        ],
+        'Country' => [
+            'access' => 'Common',
+            'actions' => 'view'
+        ],
+        'State' => [
+            'access' => 'Common',
+            'actions' => 'view'
+        ],
     ];
 
     /**

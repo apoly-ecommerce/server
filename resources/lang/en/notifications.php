@@ -61,4 +61,34 @@ return [
         'message' => 'This is a notification to let you know that your marketplace :marketplace is back to up successfully!',
         'button_text' => 'Go to the Dashboard',
     ],
+
+    'system_info_updated' => [
+        'subject' => ':marketplace - marketplace information updated successfully!',
+        'greeting' => 'Hello :user!',
+        'message' => 'This is a notification to let you know that your marketplace :marketplace has been updated successfully!',
+        'button_text' => 'Go to the Dashboard',
+    ],
+
+
+    // Shop Notifications
+    'shop_down_for_maintenance' => [
+        'subject' => 'Your shop is down!',
+        'greeting' => 'Hello :merchant!',
+        'message' => 'This is a notification to let you know that your shop :shop_name is down! No customer can visit your shop until it\'s back to live again.',
+        'button_text' => 'Go to the Config page',
+    ],
+
+    'shop_up_for_maintenance' => [
+        'subject' => 'Your shop is back to LIVE!',
+        'greeting' => 'Hello :merchant',
+        'message' => 'This is a notification to let you know that your shop :shop_name is back to live successfully!',
+        'button_text' => 'Go to the Dashboard',
+    ],
+
+    'shop_config_updated' => [
+        'subject' => 'Shop configuration updated successfully!',
+        'greeting' => 'Hello :merchant!',
+        'message' => 'Your shop configuration has been updated successfully! Click the button below to login into shop admin panel.',
+        'button_text' => 'Go to the Dashboard',
+    ],
 ];

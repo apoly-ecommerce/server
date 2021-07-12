@@ -14,8 +14,6 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
         'mpn' => $faker->randomNumber(NULL, false),
         'detail_information' => $faker->text($faker->randomElement([200,300,400,500])),
         'description' => $faker->text($faker->randomElement([200,300,400,500])),
-        'promotional_price' => $faker->randomFloat(NULL, 1000, NULL),
-        'original_price' => $faker->randomFloat(NULL, 1500, NULL),
         'slug' => $faker->slug,
         'active' => 1,
     ];

@@ -1,5 +1,7 @@
 <?php
 
+Route::get('manufacturer/setup', 'Api\ManufacturerController@setup')->name('manufacturer.setup');
+
 Route::get('manufacturer/paginate', 'Api\ManufacturerController@paginate')->name('manufacturer.paginate');
 
 Route::get('manufacturer/trashed/paginate', 'Api\ManufacturerController@trashedPaginate')->name('manufacturer.trashedPaginate');

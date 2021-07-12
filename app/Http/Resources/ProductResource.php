@@ -46,7 +46,8 @@ class ProductResource extends JsonResource
             'updated_at' => $this->updated_at,
             'image' => get_storage_file_url(optional($this->featureImage)->path, 'cover_thumb'),
             'categories' => $this->categories,
-            'media_products' => $this->mediaProducts
+            'media_products' => $this->mediaProducts,
+            'inventories' => $this->inventories,
         ];
     }
 }

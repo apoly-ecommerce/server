@@ -96,11 +96,9 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(
-          \App\Repositories\Slider\SliderRepository::class,
-          \App\Repositories\Slider\EloquentSlider::class
-      );
-
-
+            \App\Repositories\Slider\SliderRepository::class,
+            \App\Repositories\Slider\EloquentSlider::class
+        );
 
         // UTILITIES
 
@@ -117,9 +115,16 @@ class RepositoryServiceProvider extends ServiceProvider
         // STOCK
 
         $this->app->singleton(
-          \App\Repositories\Inventory\InventoryRepository::class,
-          \App\Repositories\Inventory\EloquentInventory::class
-      );
+            \App\Repositories\Inventory\InventoryRepository::class,
+            \App\Repositories\Inventory\EloquentInventory::class
+        );
+
+        // ACCOUNT
+
+        $this->app->singleton(
+            \App\Repositories\Account\AccountRepository::class,
+            \App\Repositories\Account\EloquentAccount::class
+        );
 
     }
 }

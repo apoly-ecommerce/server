@@ -47,9 +47,12 @@ class CreateConfigsTable extends Migration
             $table->boolean('notify_new_order')->nullable()->default(true);
             $table->boolean('notify_abandoned_checkout')->nullable();
             $table->boolean('notify_new_disput')->nullable()->default(true);
+            $table->boolean('enable_live_chat')->nullable()->default(true);
+            $table->boolean('notify_new_chat')->nullable()->default(true);
 
             $table->boolean('maintenance_mode')->nullable()->default(true);
             $table->boolean('pending_verification')->nullable()->default(Null);
+
             $table->timestamps();
 
             $table->primary('shop_id');

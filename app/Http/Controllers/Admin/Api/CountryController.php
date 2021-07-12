@@ -33,7 +33,6 @@ class CountryController extends Controller
 
         $successRes = [
             'countries' => CountryResource::collection($countries),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);

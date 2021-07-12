@@ -19,6 +19,13 @@ class Config extends BaseModel
     protected $primaryKey = 'shop_id';
 
     /**
+     * The primary key is not incrementing.
+     *
+     * @var boolean
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that should be casted to native types.
      *
      * @var array
@@ -26,9 +33,7 @@ class Config extends BaseModel
     protected $casts = [
         'maintenance_mode' => 'boolean',
         'pending_verification' => 'boolean',
-        'auto_archive_order' => 'boolean',
         'digital_goods_only' => 'boolean',
-        'notify_new_disput' => 'boolean',
         'notify_new_message' => 'boolean',
         'notify_alert_quantity' => 'boolean',
         'notify_inventory_out' => 'boolean',
@@ -52,26 +57,21 @@ class Config extends BaseModel
         'return_refund',
         'order_number_prefix',
         'order_number_suffix',
-        'default_tax_id',
-        'order_handling_cost',
-        'auto_archive_order',
         'default_payment_method_id',
         'pagination',
         'show_shop_desc_with_listing',
         'show_refund_policy_with_listing',
         'alert_quantity',
         'digital_goods_only',
-        'default_warehouse_id',
-        'default_supplier_id',
-        'default_packaging_ids',
         'notify_new_message',
         'notify_alert_quantity',
         'notify_inventory_out',
         'notify_new_order',
         'notify_abandoned_checkout',
-        'notify_new_disput',
         'maintenance_mode',
-        'pending_verification'
+        'pending_verification',
+        'enable_live_chat',
+        'notify_new_chat'
     ];
 
     /**
@@ -82,4 +82,41 @@ class Config extends BaseModel
         return $this->belongsTo(Shop::class);
     }
 
+    /**
+     * Get supper agent
+     */
+    public function supportAgent()
+    {
+        return $this->belongsTo(App\User::class, 'support_agent');
+    }
+
+    /**
+     * Check if Chat enabled.
+     *
+     * @return boolean
+     */
+    public function isChatEnabled()
+    {
+        return $this->enable_live_chat;
+    }
+
+    /**
+     * Scope a query to only include active shops.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLive($query)
+    {
+        return $query->where('maintenance_mode', 0)->whereNull('maintenance_mode');
+    }
+
+    /**
+     * Scope a query to only include shops thats are down for maintenance.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeDown($query)
+    {
+        return $query->where('maintenance_mode', 1);
+    }
 }

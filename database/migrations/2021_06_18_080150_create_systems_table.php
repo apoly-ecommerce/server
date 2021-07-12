@@ -23,12 +23,6 @@ class CreateSystemsTable extends Migration
             $table->text('legal_name')->nullable();
             $table->string('email')->nullable();
 
-            // Reporting
-            $table->boolean('google_analytic_report')->nullable()->default(false);
-
-            // Customer registration
-            $table->boolean('ask_customer_for_email_subscription')->nullable()->default(true);
-
             // Support
             $table->string('support_phone')->nullable();
             $table->string('support_phone_toll_free')->nullable();
@@ -38,12 +32,7 @@ class CreateSystemsTable extends Migration
 
             // Social Links
             $table->string('facebook_link')->nullable();
-            $table->string('google_plus_link')->nullable();
-            $table->string('instagram_link')->nullable();
             $table->string('youtube_link')->nullable();
-
-            // Currency
-            $table->boolean('show_currency_symbol')->default(1);
 
             // Address
             $table->integer('address_default_country')->nullable();
@@ -52,13 +41,8 @@ class CreateSystemsTable extends Migration
             $table->boolean('address_show_country')->nullable();
             $table->boolean('address_show_map')->nullable();
 
-            // Checkout
-            $table->boolean('allow_guest_checkout')->nullable()->default(true);
-            $table->boolean('auto_approve_order')->nullable()->default(false);
-
             // Notification Settings
             $table->boolean('notify_when_vendor_registered')->nullable()->default(true);
-            $table->boolean('notify_when_dispute_appealed')->nullable()->default(true);
             $table->boolean('notify_new_message')->nullable();
             $table->boolean('enable_chat')->nullable()->default(true);
 

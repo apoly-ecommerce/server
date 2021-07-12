@@ -8,6 +8,8 @@ use App\Http\Requests\Validations\CreateFaqRequest;
 use App\Http\Requests\Validations\UpdateFaqRequest;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Resources\FaqResource;
+use App\Http\Resources\FaqTopicResource;
+use App\Models\FaqTopic;
 use App\Repositories\Faq\FaqRepository;
 use Illuminate\Http\Request;
 
@@ -22,6 +24,22 @@ class FaqController extends Controller
     {
         $this->model = trans('app.model.faq');
         $this->faq = $faq;
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $faqTopics = FaqTopic::all();
+
+        $successRes = [
+            'faqTopics' => FaqTopicResource::collection($faqTopics)
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**

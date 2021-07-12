@@ -39,9 +39,21 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Shop\ShopDeleted' => [
             'App\Listeners\Shop\NotifyMerchantShopDeleted'
         ],
+        'App\Events\Shop\DownForMaintenance' => [
+            'App\Listeners\Shop\NotifyMerchantShopDownForMaintenance'
+        ],
+        'App\Events\Shop\UpForMaintenance' => [
+            'App\Listeners\Shop\NotifyMerchantShopUpForMaintenance'
+        ],
+        'App\Events\Shop\ConfigUpdated' => [
+            'App\Listeners\Shop\NotifyMerchantConfigUpdated'
+        ],
         // Profile Events
         'App\Events\Profile\PasswordUpdated' => [
             'App\Listeners\Profile\NotifyUserPasswordUpdated'
+        ],
+        'App\Events\Profile\ProfileUpdated' => [
+            'App\Listeners\Profile\NotifyUserProfileUpdated'
         ],
         // System Events
         'App\Events\System\DownForMaintenance' => [
@@ -49,6 +61,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\System\UpForMaintenance' => [
             'App\Listeners\System\NotifyAdminSystemIsUp'
+        ],
+        'App\Events\System\SystemConfigUpdated' => [
+            'App\Listeners\System\NotifyAdminConfigUpdated'
         ],
         // Auth Events
         Registered::class => [

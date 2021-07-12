@@ -30,8 +30,6 @@ class UpdateProductRequest extends Request
             'name' => 'required|composite_unique:products, '.$id,
             'description' => 'required',
             'active' => 'required',
-            'promotional_price' => 'nullable|numeric|min:0',
-            'original_price' => 'nullable|numeric|min:' . $this->min_price ?? 0,
             'image' => 'mimes:jpg,jpeg,png,gif',
         ];
     }

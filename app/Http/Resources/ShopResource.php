@@ -37,7 +37,8 @@ class ShopResource extends JsonResource
                 'support_phone' => $this->config->support_phone,
                 'support_email' => $this->config->support_email,
                 'updated_at' => $this->config->updated_at,
-            ]
+            ],
+            'maintenance_mode' => $this->config->maintenance_mode
         ];
     }
 }

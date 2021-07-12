@@ -1,0 +1,1 @@
+<p>Send mail notify shop was turn down for maintenance.</p>

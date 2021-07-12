@@ -39,7 +39,7 @@ class MerchantResource extends JsonResource
               'level' => $this->role->level
             ],
             'image' => get_storage_file_url(optional($this->image)->path, 'medium'),
-            'primaryAddress' => $this->primary_address,
+            'primaryAddress' => $this->primaryAddress,
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

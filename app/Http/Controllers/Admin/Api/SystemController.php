@@ -19,6 +19,8 @@ class SystemController extends Controller
 {
     use Authorizable;
 
+    protected $model;
+
     /**
      * Constructor
      */

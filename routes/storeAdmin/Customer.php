@@ -1,5 +1,7 @@
 <?php
 
+Route::get('customer/setup', 'Api\CustomerController@setup')->name('customer.setup');
+
 Route::get('customer/paginate', 'Api\CustomerController@paginate')->name('customer.paginate');
 
 Route::get('customer/trashed/paginate', 'Api\CustomerController@trashedPaginate')->name('customer.trashedPaginate');

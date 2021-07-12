@@ -11,6 +11,8 @@ use App\Http\Requests\Validations\CreateCustomerRequest;
 use App\Repositories\Customer\CustomerRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\Validations\AdminCustomerUpdatePasswordRequest as UpdatePasswordRequest;
+use App\Http\Resources\CountryResource;
+use App\Models\Country;
 
 class CustomerController extends Controller
 {
@@ -36,6 +38,22 @@ class CustomerController extends Controller
     {
         return 'index method';
     }
+
+  /**
+   * Return response creating or updating resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function setup()
+  {
+      $countries = Country::all();
+
+      $successRes = [
+          'countries' => CountryResource::collection($countries)
+      ];
+
+      return new ApiStatusResource($successRes);
+  }
 
     /**
      * Display a listing of the resource.

@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Validations\CreateCategoryRequest;
 use App\Http\Requests\Validations\UpdateCategoryRequest;
 use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\CategoryGroupResource;
 use App\Http\Resources\CategoryResource;
+use App\Models\CategoryGroup;
 use App\Repositories\Category\CategoryRepository;
 use Illuminate\Http\Request;
 
@@ -38,6 +40,22 @@ class CategoryController extends Controller
 
         return new ApiStatusResource($successRes);
 
+    }
+
+    /**
+     * Return resource creating of updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $categoryGroups = CategoryGroup::all();
+
+        $successRes = [
+            'categoryGroups' => CategoryGroupResource::collection($categoryGroups),
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**
@@ -227,6 +245,22 @@ class CategoryController extends Controller
 
         $successRes = [
             'success' => trans('messages.restored', ['model' => $this->model]),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Empty the Trash the mass resources.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function emptyTrash()
+    {
+        $this->category->emptyTrash();
+
+        $successRes = [
+            'success' => trans('messages.deleted', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);

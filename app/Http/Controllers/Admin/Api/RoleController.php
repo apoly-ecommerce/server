@@ -19,7 +19,7 @@ class RoleController extends Controller
 
     use Authorizable;
 
-    protected $model_name;
+    protected $model;
     protected $role;
 
     /**
@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function __construct(RoleRepository $role)
     {
-        $this->model_name = trans('app.model.role');
+        $this->model = trans('app.model.role');
         $this->role  = $role;
     }
 
@@ -43,7 +43,6 @@ class RoleController extends Controller
 
         $successRes = [
           'roles' => RoleResource::collection($roles),
-          'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -62,7 +61,6 @@ class RoleController extends Controller
         $successRes = [
             'roles' => RoleResource::collection($roles),
             'total' => $this->role->all()->count(),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -81,7 +79,6 @@ class RoleController extends Controller
         $successRes = [
             'roles' => RoleResource::collection($roles),
             'total' => $this->role->all()->count(),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -98,8 +95,7 @@ class RoleController extends Controller
         $this->role->store($request);
 
         $successRes = [
-            'success' => trans('messages.created', ['model' => $this->model_name]),
-            'status' => 200
+            'success' => trans('messages.created', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -120,7 +116,6 @@ class RoleController extends Controller
         $successRes = [
             'role' => (new RoleResource($role)),
             'role_permissions' => (PermissionResource::collection($role_permissions)),
-            'status' => 200
         ];
 
         return new ApiStatusResource($successRes);
@@ -138,8 +133,7 @@ class RoleController extends Controller
         $this->role->update($request, $id);
 
         $successRes = [
-            'success' => trans('messages.updated', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.updated', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -156,8 +150,7 @@ class RoleController extends Controller
         $this->role->trash($id);
 
         $successRes = [
-            'success' => trans('messages.trashed', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.trashed', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -174,8 +167,7 @@ class RoleController extends Controller
         $this->role->massTrash($request->ids);
 
         $successRes = [
-            'success' => trans('messages.trashed', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.trashed', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -193,8 +185,7 @@ class RoleController extends Controller
         $this->role->destroy($id);
 
         $successRes = [
-            'success' => trans('messages.deleted', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.deleted', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -211,8 +202,7 @@ class RoleController extends Controller
         $this->role->massDestroy($request->ids);
 
         $successRes = [
-            'success' => trans('messages.deleted', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.deleted', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -229,8 +219,7 @@ class RoleController extends Controller
         $this->role->restore($id);
 
         $successRes = [
-            'success' => trans('messages.restored', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.restored', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -248,8 +237,7 @@ class RoleController extends Controller
         $this->role->massRestore($request->ids);
 
         $successRes = [
-            'success' => trans('messages.restored', ['model' => $this->model_name]),
-            'status'  => 200
+            'success' => trans('messages.restored', ['model' => $this->model]),
         ];
 
         return new ApiStatusResource($successRes);
@@ -270,9 +258,25 @@ class RoleController extends Controller
             $successRes = [
                 'role' => new RoleResource($role),
                 'role_permissions' => PermissionResource::collection($role_permission),
-                'status' => 200
             ];
             return new ApiStatusResource($successRes);
         }
+    }
+
+    /**
+     * Empty the Trash the mass resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function emptyTrash(Request $request)
+    {
+        $this->role->emptyTrash($request);
+
+        $successRes = [
+            'success' => trans('messages.deleted', ['model' => $this->model]),
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 }

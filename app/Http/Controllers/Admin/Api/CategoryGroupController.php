@@ -236,4 +236,20 @@ class CategoryGroupController extends Controller
 
         return new ApiStatusResource($successRes);
     }
+
+    /**
+     * Empty the Trash the mass resources.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function emptyTrash()
+    {
+        $this->categoryGroup->emptyTrash();
+
+        $successRes = [
+            'success' => trans('messages.deleted', ['model' => $this->model]),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
 }

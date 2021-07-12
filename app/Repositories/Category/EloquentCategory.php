@@ -52,4 +52,15 @@ class EloquentCategory extends EloquentRepository implements BaseRepository, Cat
 
         return parent::massDestroy($ids);
     }
+
+    public function emptyTrash()
+    {
+        $cats = $this->model->onlyTrashed()->get();
+
+        foreach ($cats as $cat) {
+            $cat->flushImages();
+        }
+
+        return parent::emptyTrash();
+    }
 }

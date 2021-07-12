@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Inventory;
-use App\Common\Authorizable;
+use App\Helpers\Authorize;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InventoryPolicy
@@ -19,7 +19,7 @@ class InventoryPolicy
      */
     public function index(User $user)
     {
-        return (new Authorizable($user, 'view_inventory'))->check();
+        return (new Authorize($user, 'view_inventory'))->check();
     }
 
     /**
@@ -31,7 +31,7 @@ class InventoryPolicy
      */
     public function view(User $user, Inventory $inventory)
     {
-        return (new Authorizable($user, 'view_inventory', $inventory))->check();
+        return (new Authorize($user, 'view_inventory', $inventory))->check();
     }
 
     /**
@@ -42,7 +42,7 @@ class InventoryPolicy
      */
     public function create(User $user)
     {
-        return (new Authorizable($user, 'add_inventory'))->check();
+        return (new Authorize($user, 'add_inventory'))->check();
     }
 
     /**
@@ -54,7 +54,7 @@ class InventoryPolicy
      */
     public function update(User $user, Inventory $inventory)
     {
-        return (new Authorizable($user, 'edit_inventory', $inventory))->check();
+        return (new Authorize($user, 'edit_inventory', $inventory))->check();
     }
 
     /**
@@ -66,7 +66,7 @@ class InventoryPolicy
      */
     public function delete(User $user, Inventory $inventory)
     {
-        return (new Authorizable($user, 'delete_inventory', $inventory))->check();
+        return (new Authorize($user, 'delete_inventory', $inventory))->check();
     }
 
     /**
@@ -77,7 +77,7 @@ class InventoryPolicy
      */
     public function massDelete(User $user)
     {
-        return (new Authorizable($user, 'delete_inventory'))->check();
+        return (new Authorize($user, 'delete_inventory'))->check();
     }
 
 }

@@ -44,8 +44,6 @@ class Product extends BaseModel
         'mpn',
         'detail_information',
         'description',
-        'promotional_price',
-        'original_price',
         'requires_shipping',
         'slug',
         'meta_title',

@@ -16,7 +16,11 @@ use App\Repositories\User\UserRepository;
 use App\Http\Requests\Validations\CreateUserRequest;
 use App\Http\Requests\Validations\UpdateUserRequest;
 use App\Http\Requests\Validations\AdminUserUpdatePasswordRequest as UpdatePasswordRequest;
+use App\Http\Resources\CountryResource;
 use App\Http\Resources\PermissionResource;
+use App\Http\Resources\RoleResource;
+use App\Models\Country;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -39,6 +43,28 @@ class UserController extends Controller
     public function index()
     {
         return 'handle all user !';
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        if (! Auth::user()->isFromPlatform()) {
+            $roles = Role::mine()->lowerPrivileged()->withCount('users')->get();
+        } else {
+            $roles = Role::lowerPrivileged()->withCount('users')->get();
+        }
+        $countries = Country::all();
+
+        $successRes = [
+            'roles' => RoleResource::collection($roles),
+            'countries' => CountryResource::collection($countries)
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**
@@ -112,6 +138,7 @@ class UserController extends Controller
         ];
         return new ApiStatusResource($successRes);
     }
+
 
     /**
      * Display the specified resource.

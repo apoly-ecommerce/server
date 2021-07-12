@@ -1,5 +1,7 @@
 <?php
 
+Route::get('shop/setup', 'Api\ShopController@setup')->name('shop.setup');
+
 Route::get('shop/paginate', 'Api\ShopController@paginate')->name('shop.paginate');
 
 Route::get('shop/trashed/paginate', 'Api\ShopController@trashedPaginate')->name('shop.trashedPaginate');

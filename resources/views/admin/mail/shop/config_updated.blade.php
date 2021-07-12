@@ -1,0 +1,1 @@
+<p>Send mail notify config updated successfully.</p>

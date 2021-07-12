@@ -25,7 +25,7 @@ class UpdateFaqTopicRequest extends Request
     {
         return [
             'name' => 'required',
-            'format' => 'required'
+            'for'  => 'required'
         ];
     }
 }

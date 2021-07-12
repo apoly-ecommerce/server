@@ -27,17 +27,7 @@ class SystemsSeeder extends BaseSeeder
 
             // Social Links
             'facebook_link' => 'https://www.facebook.com/it.phamdinhhung',
-            'google_plus_link' => 'https://plus.google.com/',
             'youtube_link' => 'https://www.youtube.com/',
-
-            // Currency
-            'show_currency_symbol' => 1,
-
-            // Reporting
-            'google_analytic_report' => 0,
-
-            // Checkout
-            'allow_guest_checkout' => 1,
 
             // Address
             'address_show_map' => 1,

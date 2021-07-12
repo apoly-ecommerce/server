@@ -1,4 +1,5 @@
 <?php
+Route::get('banner/setup', 'Api\BannerController@setup')->name('banner.setup');
 
 Route::get('banner/paginate', 'Api\BannerController@paginate')->name('banner.paginate');
 

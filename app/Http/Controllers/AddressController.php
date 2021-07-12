@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Validations\CreateAddressRequest;
 use App\Http\Requests\Validations\UpdateAddressRequest;
-use App\Http\Resources\ApiStatusResource;
+use App\Http\Resources\CountryResource;
 use App\Http\Resources\AddressesResource;
+use App\Http\Resources\ApiStatusResource;
+use App\Models\Country;
 use App\Repositories\Address\AddressRepository;
 use Illuminate\Http\Request;
 
@@ -23,6 +25,22 @@ class AddressController extends Controller
     {
         $this->model = trans('app.model.address');
         $this->address = $address;
+    }
+
+    /**
+     * Return response creating or updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setup()
+    {
+        $countries = Country::all();
+
+        $successRes = [
+            'countries' => CountryResource::collection($countries),
+        ];
+
+        return new ApiStatusResource($successRes);
     }
 
     /**

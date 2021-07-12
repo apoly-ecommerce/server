@@ -1,5 +1,7 @@
 <?php
 
+Route::get('category/setup', 'Api\CategoryController@setup')->name('category.setup');
+
 Route::get('category/paginate', 'Api\CategoryController@paginate')->name('category.paginate');
 
 Route::get('category/trashed/paginate', 'Api\CategoryController@trashedPaginate')->name('category.trashedPaginate');
@@ -13,6 +15,8 @@ Route::patch('category/{category}/restore', 'Api\CategoryController@restore')->n
 Route::patch('category/massRestore', 'Api\CategoryController@massRestore')->name('category.massRestore');
 
 Route::delete('category/massDestroy', 'Api\CategoryController@massDestroy')->name('category.massDestroy');
+
+Route::delete('category/emptyTrash', 'Api\CategoryController@emptyTrash')->name('category.emptyTrash');
 
 Route::delete('category/emptyTrash', 'Api\CategoryController@emptyTrash')->name('category.emptyTrash');
 

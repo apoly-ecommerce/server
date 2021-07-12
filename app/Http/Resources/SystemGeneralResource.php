@@ -3,8 +3,8 @@
 namespace App\Http\Resources;
 
 use Hash;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class SystemGeneralResource extends JsonResource
 {
