@@ -286,11 +286,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the shops the user own.
+     * Get the shops for the user own.
      */
     public function owns()
     {
         return $this->hasOne(Shop::class, 'owner_id')->withTrashed()->withDefault();
+    }
+
+    /**
+     * Get the rooms fot the user.
+     */
+    public function chatRooms()
+    {
+        return $this->belongsToMany(\App\Models\ChatRoom::class, 'chat_room_user', 'user_id', 'room_id');
     }
 
 }

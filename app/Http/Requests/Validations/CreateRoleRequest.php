@@ -24,7 +24,7 @@ class CreateRoleRequest extends Request
     public function rules() : array
     {
         $rules = [];
-        $rules['name'] = 'bail|required|unique:roles';
+        $rules['name'] = 'bail|required';
 
         $shop_id = Request::user()->merchantId(); // Get current user's shop_id
 

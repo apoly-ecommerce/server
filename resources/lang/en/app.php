@@ -34,6 +34,8 @@ return [
         'config' => 'Config',
         'profile' => 'Profile',
         'notification' => 'Notification',
+        'userMessage' => 'User Message',
+        'chatRoom' => 'Chat Room',
     ],
     'no_img_available' => 'No_Image_Found',
     'guest_customer' => 'Guest customer',

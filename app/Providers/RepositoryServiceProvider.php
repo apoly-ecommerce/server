@@ -126,5 +126,17 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Account\EloquentAccount::class
         );
 
+
+        // MESSAGES
+        $this->app->singleton(
+            \App\Repositories\ChatRoom\ChatRoomRepository::class,
+            \App\Repositories\ChatRoom\EloquentChatRoom::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\UserMessage\UserMessageRepository::class,
+            \App\Repositories\UserMessage\EloquentUserMessage::class
+        );
+
     }
 }

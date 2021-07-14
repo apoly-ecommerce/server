@@ -94,6 +94,13 @@ Route::group([
             include('storeAdmin/SystemConfig.php');
         });
 
+        // Support Routes for Admin
+        Route::group(['as' => 'support.', 'prefix' => 'support'], function()
+        {
+            include('storeAdmin/UserMessage.php');
+            include('storeAdmin/Message.php');
+        });
+
     });
 
 });
