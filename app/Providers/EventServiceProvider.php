@@ -65,10 +65,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\System\SystemConfigUpdated' => [
             'App\Listeners\System\NotifyAdminConfigUpdated'
         ],
+        // Message Events
+        'App\Events\Message\ChatRoomCreated' => [
+            'App\Listeners\Message\NotifyChatRoomCreated'
+        ],
         // Auth Events
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
     ];
 
     /**

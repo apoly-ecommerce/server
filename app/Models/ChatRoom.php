@@ -31,7 +31,7 @@ class ChatRoom extends BaseModel
     /**
      * Get the user associated with the chat room.
      */
-    public function createdBy()
+    public function userCreated()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
@@ -68,6 +68,15 @@ class ChatRoom extends BaseModel
         // $user_ids = $this->users()->pluck('id')->toArray();
 
         // return $query->whereIn(\Auth::user()->id, $user_ids);
+    }
+
+    /**
+     *
+     */
+    public function isUserInRoom($userId)
+    {
+        $usersId = $this->users()->pluck('id')->toArray();
+        return in_array($userId, $usersId);
     }
 
 }

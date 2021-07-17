@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Api;
 
+use App\Events\Message\ChatRoomCreated;
 use App\Repositories\ChatRoom\ChatRoomRepository;
 use App\Http\Resources\ApiStatusResource;
 use App\Http\Controllers\Controller;
@@ -50,7 +51,9 @@ class ChatRoomController extends Controller
      */
     public function store(CreateChatRoomRequest $request)
     {
-        $this->chatRoom->store($request);
+        $chatRoom = $this->chatRoom->store($request);
+
+        broadcast(new ChatRoomCreated($chatRoom));
 
         $successRes = [
             'success' => trans('messages.created', ['model' => $this->model]),

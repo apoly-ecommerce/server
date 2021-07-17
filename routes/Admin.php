@@ -1,5 +1,9 @@
 <?php
 
+Route::post('pusher/auth', function() {
+  return true;
+});
+
 Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['as' => 'auth.', 'prefix' => 'auth'], function() {
@@ -15,6 +19,9 @@ Route::group([
     'as'         => 'admin.',
     'middleware' => 'auth:api'
 ], function() {
+
+    // Auth Pusher
+    Route::post('pusher/auth', 'Api\PusherController@pusherAuth');
 
     // Marketplace Admin only routes
     Route::middleware(['admin'])->group(function() {

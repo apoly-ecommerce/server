@@ -9,6 +9,7 @@ use App\Http\Resources\ApiStatusResource;
 use App\Http\Resources\UserAuthResource;
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Pusher\Pusher;
 
 class AuthController extends Controller
 {
@@ -71,5 +72,38 @@ class AuthController extends Controller
             ];
             return new ApiStatusResource($successRes);
         }
+    }
+
+    public function broadcasting(Request $request)
+    {
+        $user = $request->user();
+
+        $presenceData = [
+            'user_id' => $user->id,
+            'user_info' => [
+                'name' => $user->name,
+                'email' => $user->email,
+            ]
+        ];
+
+        // $auth = Pusher::presence_auth($request->channel_name, $request->socket_id, $presenceData);
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+            ],
+        );
+
+        $auth = $pusher->presence_auth($request->channel_name, $request->socket_id, $presenceData);
+
+        $successRes = [
+            'auth' => $auth,
+        ];
+
+        // return new ApiStatusResource($successRes);
+        return $auth;
+
     }
 }

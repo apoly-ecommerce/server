@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ChatRoom;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('chatRoom.{id}', function ($user, $id) {
+    // return ChatRoom::findOrNew($roomId)->isUserInRoom($user->id);
+    return true;
 });
