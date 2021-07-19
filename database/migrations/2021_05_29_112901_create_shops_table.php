@@ -43,4 +43,5 @@ class CreateShopsTable extends Migration
     {
         Schema::drop('shops');
     }
+
 }

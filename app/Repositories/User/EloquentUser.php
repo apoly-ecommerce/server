@@ -34,6 +34,15 @@ class EloquentUser extends EloquentRepository implements BaseRepository, UserRep
         return $this->model->level()->fromPlatform()->onlyTrashed()->with('role', 'shop', 'image', 'primaryAddress')->paginate($limit);
     }
 
+    public function friends($limit)
+    {
+        if (! Auth::user()->isFromPlatform()) {
+            return Auth::user()->mine()->where('id', '!=', Auth::id())->with('shop', 'image', 'role')->paginate($limit);
+        }
+
+        return  Auth::user()->where('id', '!=', Auth::id())->fromPlatform()->with('shop', 'image', 'role')->paginate($limit);
+    }
+
     public function addresses($user)
     {
         return $user->addresses()->get();

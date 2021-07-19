@@ -17,7 +17,7 @@ use App\Http\Requests\Validations\CreateUserRequest;
 use App\Http\Requests\Validations\UpdateUserRequest;
 use App\Http\Requests\Validations\AdminUserUpdatePasswordRequest as UpdatePasswordRequest;
 use App\Http\Resources\CountryResource;
-use App\Http\Resources\PermissionResource;
+use App\Http\Resources\FriendResource;
 use App\Http\Resources\RoleResource;
 use App\Models\Country;
 use App\Models\Role;
@@ -98,6 +98,22 @@ class UserController extends Controller
         $successRes = [
             'users' => UserResource::collection($users),
             'total'  => $this->user->trashOnly()->count(),
+        ];
+
+        return new ApiStatusResource($successRes);
+    }
+
+    /**
+     * Display a listing friends for the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function friends(Request $request)
+    {
+        $friends = $this->user->friends($request->limit);
+
+        $successRes = [
+            'friends' => FriendResource::collection($friends)
         ];
 
         return new ApiStatusResource($successRes);

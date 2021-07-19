@@ -40,4 +40,12 @@ class BaseModel extends Model
     {
         return $query->where('shop_id', Auth::user()->merchantId());
     }
+
+    /**
+     * Get the creator user for the model.
+     */
+    public function creator()
+    {
+        return $this->belongsTo(\App\User::class, 'creator_id');
+    }
 }

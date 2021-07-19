@@ -58,10 +58,6 @@ class ModulesSeeder extends BaseSeeder
             'access' => 'Common',
             'actions' => 'view,add,edit,delete'
         ],
-        'Module' => [
-            'access' => 'Super Admin',
-            'actions' => 'view,add,edit,delete'
-        ],
         'Order' => [
             'access' => 'Common',
             'actions' => 'view,add,fulfill,cancel,archive,delete'
@@ -91,10 +87,6 @@ class ModulesSeeder extends BaseSeeder
             'actions' => 'view,add,edit,delete',
         ],
         'User' => [
-            'access' => 'Common',
-            'actions' => 'view,add,edit,delete'
-        ],
-        'Module' => [
             'access' => 'Common',
             'actions' => 'view,add,edit,delete'
         ],

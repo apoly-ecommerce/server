@@ -23,7 +23,10 @@ class CreateUserRequest extends Request
      */
     public function rules()
     {
-      return [
+
+        Request::merge(['creator_id' => Request::user()->id]);
+
+        return [
             'name'  => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',

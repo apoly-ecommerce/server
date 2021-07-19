@@ -35,6 +35,7 @@ trait Authorizable
         'general'                   => 'view',
         'unread'                    => 'view',
         'notification'              => 'view',
+        'friends'                   => 'view',
 
         'generate'    => 'add',
         'create'      => 'add',

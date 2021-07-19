@@ -5,6 +5,8 @@ Route::get('user/setup', 'Api\UserController@setup')->name('user.setup');
 
 Route::get('user/auth', 'Api\UserController@userAuth')->name('user.userAuth');
 
+Route::get('user/friends', 'Api\UserController@friends')->name('user.friends');
+
 Route::get('user/paginate', 'Api\UserController@paginate')->name('user.paginate');
 
 Route::get('user/trashed/paginate', 'Api\UserController@trashedPaginate')->name('user.trashedPaginate');

@@ -32,6 +32,7 @@ class User extends Authenticatable
     protected $fillable = [
         'shop_id',
         'role_id',
+        'creator_id',
         'name',
         'nice_name',
         'email',
@@ -131,7 +132,7 @@ class User extends Authenticatable
      *
      * @return int
      */
-    public function merchantId() : int
+    public function merchantId()
     {
         return (int) $this->shop_id;
     }
@@ -141,7 +142,7 @@ class User extends Authenticatable
      *
      * @return bool
      */
-    public function isSuperAdmin() : bool
+    public function isSuperAdmin()
     {
         return $this->role_id == Role::SUPER_ADMIN;
     }
@@ -151,7 +152,7 @@ class User extends Authenticatable
      *
      * @return bool
      */
-    public function isAdmin() : bool
+    public function isAdmin()
     {
         return $this->isSuperAdmin() || $this->role_id == Role::ADMIN;
     }
@@ -292,13 +293,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(Shop::class, 'owner_id')->withTrashed()->withDefault();
     }
-
-    /**
-     * Get the rooms fot the user.
-     */
-    public function chatRooms()
-    {
-        return $this->belongsToMany(\App\Models\ChatRoom::class, 'chat_room_user', 'user_id', 'room_id');
-    }
-
 }

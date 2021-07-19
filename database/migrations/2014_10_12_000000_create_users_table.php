@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('shop_id')->unsigned()->nullable();
             $table->integer('role_id')->unsigned()->nullable();
+            $table->bigInteger('creator_id')->unsigned()->nullable();
             $table->string('name')->nullable();
             $table->string('nice_name')->nullable();
             $table->string('email')->unique();
@@ -34,6 +35,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
