@@ -36,6 +36,7 @@ trait Authorizable
         'unread'                    => 'view',
         'notification'              => 'view',
         'friends'                   => 'view',
+        'exportPdf'                 => 'view',
 
         'generate'    => 'add',
         'create'      => 'add',

@@ -53,7 +53,7 @@ if (! function_exists('get_placeholder_img'))
         $size = config("image.sizes.{$size}");
 
         if ($size && is_array($size)) {
-            return "https://placehold.it/{$size['w']}x{$size['h']}/eee?text=" . trans('app.no_img_available');
+            return "https://via.placeholder.com/{$size['w']}x{$size['h']}/";
         }
 
         return url("images/placeholders/no_img.png");

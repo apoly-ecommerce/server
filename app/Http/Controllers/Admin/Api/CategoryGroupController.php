@@ -252,4 +252,24 @@ class CategoryGroupController extends Controller
 
         return new ApiStatusResource($successRes);
     }
+
+    /**
+     * Export PDF
+     */
+    public function exportPdf()
+    {
+        $categories = $this->categoryGroup->all();
+        $pdf = \PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView("admin.pdf.category_group.list", $categories);
+        return $pdf->download();
+    }
+
+    public function exportCsv()
+    {
+
+    }
+
+    public function exportPrint()
+    {
+
+    }
 }
